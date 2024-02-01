@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.ashera.appbarlayout.ios"
+        version="1.0">
+
+  <name>CordovaAppBarLayoutPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="com.ashera.appbarlayout.ios">
+        	<param name="ios-package" value="CordovaAppBarLayoutPlugin" />
+         	<param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start ios -->
+     <header-file src="ios/src/AppBarLayout.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/AppBarLayout.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/AppBarLayoutImpl.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/AppBarLayoutImpl.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/AppBarLayoutPlugin.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/AppBarLayoutPlugin.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/CordovaAppBarLayoutPlugin.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/CordovaAppBarLayoutPlugin.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/HeaderBehavior.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/HeaderBehavior.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/HeaderScrollingViewBehavior.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/HeaderScrollingViewBehavior.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/ViewOffsetBehavior.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/ViewOffsetBehavior.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/ViewOffsetHelper.h" target-dir="AppBarLayout/ios/src"/>
+     <source-file src="ios/src/ViewOffsetHelper.m" target-dir="AppBarLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <!-- ios end -->
+     <!-- start tsc -->
+     <source-file src="tsc/src/ios/widget/AppBarLayoutImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <!-- tsc end -->
+  </platform>
+
+</plugin>

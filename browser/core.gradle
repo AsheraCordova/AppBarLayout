@@ -1,0 +1,20 @@
+repositories {
+    google();
+    jcenter();
+    
+    maven {
+    	url "https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-java-repo/master/"
+	}
+	
+	maven {
+    	url "https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-web-repo/master/"
+	}
+}
+
+dependencies {
+	def project_version = '1.0.0';
+	
+	//cap insets
+	implementation "com.ashera:WebAppBarLayoutPlugin:${project_version}"
+    
+}

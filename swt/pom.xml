@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ashera</groupId>
+	<artifactId>SWTAppBarLayoutPlugin</artifactId>
+	<parent>
+		<groupId>com.ashera</groupId>
+		<artifactId>swt</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.ashera</groupId>
+			<artifactId>SWTCommon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ashera</groupId>
+			<artifactId>htmlparser</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ashera</groupId>
+			<artifactId>SWTLayouts</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ashera</groupId>
+			<artifactId>SWTCoordinatorLayoutPlugin</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<altDeploymentRepository>internal.repo::default::file:///D:/Java/github_ashera/mvn-ashera-swt-repo</altDeploymentRepository>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Github Repo</name>
+			<url>file:///D:/Java/github_ashera/mvn-ashera-swt-repo</url>
+		</repository>
+	</distributionManagement>
+
+
+	<repositories>
+		<repository>
+			<id>ashera-github-swt-repo</id>
+			<url>https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-swt-repo/master/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>ashera-github-java-repo</id>
+			<url>https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-java-repo/master/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

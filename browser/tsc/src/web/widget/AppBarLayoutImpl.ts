@@ -21,6 +21,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -72,11 +73,11 @@ export abstract class AppBarLayoutImpl<T> extends ViewGroupImpl<T>{
 	static initialize() {
 		TransformerFactory.getInstance().register("layout_scrollFlags", new Layout_scrollFlagsTransformer());
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "expanded" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "expanded" }))
 	expanded!:CommandAttr<boolean>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	
@@ -109,13 +110,13 @@ export abstract class AppBarLayoutImpl<T> extends ViewGroupImpl<T>{
 	
 //start - staticinit
 export abstract class AppBarLayoutImpl_LayoutParams<T> extends ViewGroupImpl_LayoutParams<T> {
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_scrollFlags" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_scrollFlags" }))
 	layout_scrollFlags!:CommandAttr<Layout_scrollFlags[]>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_scrollInterpolator" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_scrollInterpolator" }))
 	layout_scrollInterpolator!:CommandAttr<string>| undefined;
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

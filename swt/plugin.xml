@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.ashera.appbarlayout"
+        id="com.ashera.appbarlayout.swt"
         version="1.0">
 
   <name>CordovaAppBarLayoutPlugin</name>

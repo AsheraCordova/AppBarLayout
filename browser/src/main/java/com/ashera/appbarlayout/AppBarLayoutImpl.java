@@ -93,6 +93,7 @@ public class AppBarLayoutImpl extends BaseHasWidgets {
 		
 		
 		ViewGroupImpl.registerCommandConveter(this);
+
 	}
 
 	@Override
@@ -480,7 +481,7 @@ public class AppBarLayoutImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 		switch (key.getAttributeName()) {
 			case "expanded": {
@@ -558,115 +559,5 @@ private void setScrollInterpolator(com.google.android.material.appbar.AppBarLayo
         ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
-	
-private AppBarLayoutCommandBuilder builder;
-private AppBarLayoutBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public AppBarLayoutBean getBean() {
-	if (bean == null) {
-		bean = new AppBarLayoutBean();
-	}
-	return bean;
-}
-public AppBarLayoutCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new AppBarLayoutCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class AppBarLayoutCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <AppBarLayoutCommandBuilder> {
-    public AppBarLayoutCommandBuilder() {
-	}
-	
-	public AppBarLayoutCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-public AppBarLayoutCommandBuilder setExpanded(boolean value) {
-	Map<String, Object> attrs = initCommand("expanded");
-	attrs.put("type", "attribute");
-	attrs.put("setter", true);
-	attrs.put("orderSet", ++orderSet);
-
-	attrs.put("value", value);
-return this;}
-}
-public class AppBarLayoutBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public AppBarLayoutBean() {
-			super(AppBarLayoutImpl.this);
-		}
-public void setExpanded(boolean value) {
-	getBuilder().reset().setExpanded(value).execute(true);
-}
-
-}
-
-
-private AppBarLayoutCommandParamsBuilder paramsBuilder;
-private AppBarLayoutParamsBean paramsBean;
-
-public AppBarLayoutParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new AppBarLayoutParamsBean();
-	}
-	return paramsBean;
-}
-public AppBarLayoutCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new AppBarLayoutCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class AppBarLayoutParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-public void setLayoutScrollFlags(IWidget w, String value) {
-	java.util.Map<String, Object> layoutParams = new java.util.HashMap<String, Object>();
-	layoutParams.put("layoutParams", getParamsBuilder().reset().setLayoutScrollFlags(value).getCommand());
-	w.executeCommand(layoutParams, null, COMMAND_EXEC_SETTER_METHOD);
-	w.getFragment().remeasure();
-}
-
-public void setLayoutScrollInterpolator(IWidget w, String value) {
-	java.util.Map<String, Object> layoutParams = new java.util.HashMap<String, Object>();
-	layoutParams.put("layoutParams", getParamsBuilder().reset().setLayoutScrollInterpolator(value).getCommand());
-	w.executeCommand(layoutParams, null, COMMAND_EXEC_SETTER_METHOD);
-	w.getFragment().remeasure();
-}
-
-}
-
-
-
-
-
-public class AppBarLayoutCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<AppBarLayoutCommandParamsBuilder>{
-public AppBarLayoutCommandParamsBuilder setLayoutScrollFlags(String value) {
-	Map<String, Object> attrs = initCommand("layout_scrollFlags");
-	attrs.put("type", "attribute");
-	attrs.put("setter", true);
-	attrs.put("orderSet", ++orderSet);
-
-	attrs.put("value", value);
-return this;}
-public AppBarLayoutCommandParamsBuilder setLayoutScrollInterpolator(String value) {
-	Map<String, Object> attrs = initCommand("layout_scrollInterpolator");
-	attrs.put("type", "attribute");
-	attrs.put("setter", true);
-	attrs.put("orderSet", ++orderSet);
-
-	attrs.put("value", value);
-return this;}
-}
-
-	//end - body
+		//end - body
 }

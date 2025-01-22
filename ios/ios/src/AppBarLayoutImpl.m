@@ -9,7 +9,6 @@
 #include "BaseHasWidgets.h"
 #include "ConverterFactory.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -46,16 +45,11 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASAppBarLayoutImpl () {
  @public
   id uiView_;
   ASAppBarLayout *appBarLayout_;
-  ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *builder_;
-  ASAppBarLayoutImpl_AppBarLayoutBean *bean_;
-  ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *paramsBuilder_;
-  ASAppBarLayoutImpl_AppBarLayoutParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -73,10 +67,6 @@
 
 J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, appBarLayout_, ASAppBarLayout *)
-J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, builder_, ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, bean_, ASAppBarLayoutImpl_AppBarLayoutBean *)
-J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, paramsBuilder_, ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl, paramsBean_, ASAppBarLayoutImpl_AppBarLayoutParamsBean *)
 
 __attribute__((unused)) static void ASAppBarLayoutImpl_setWidgetOnNativeClass(ASAppBarLayoutImpl *self);
 
@@ -114,27 +104,6 @@ J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl_AppBarLayoutExt, measureFinished_, ASMeas
 J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl_AppBarLayoutExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl_AppBarLayoutExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASAppBarLayoutImpl_AppBarLayoutExt, templates_, id<JavaUtilMap>)
-
-@interface ASAppBarLayoutImpl_AppBarLayoutCommandBuilder () {
- @public
-  ASAppBarLayoutImpl *this$0_;
-}
-
-@end
-
-@interface ASAppBarLayoutImpl_AppBarLayoutBean () {
- @public
-  ASAppBarLayoutImpl *this$0_;
-}
-
-@end
-
-@interface ASAppBarLayoutImpl_AppBarLayoutParamsBean () {
- @public
-  ASAppBarLayoutImpl *this$0_;
-}
-
-@end
 
 @interface ASAppBarLayoutImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -374,38 +343,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASAppBarLayoutImpl_AppBarLayoutBean_initWithASAppBarLayoutImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASAppBarLayoutImpl_AppBarLayoutCommandBuilder_initWithASAppBarLayoutImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASAppBarLayoutImpl_AppBarLayoutParamsBean_initWithASAppBarLayoutImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder_initWithASAppBarLayoutImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
@@ -435,11 +372,6 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x2, 27, 28, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 29, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 30, 31, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 32, 1, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -471,24 +403,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[24].selector = @selector(setScrollInterpolatorWithASAppBarLayout_LayoutParams:withId:);
   methods[25].selector = @selector(setIdWithNSString:);
   methods[26].selector = @selector(setVisibleWithBoolean:);
-  methods[27].selector = @selector(getPluginWithNSString:);
-  methods[28].selector = @selector(getBean);
-  methods[29].selector = @selector(getBuilder);
-  methods[30].selector = @selector(getParamsBean);
-  methods[31].selector = @selector(getParamsBuilder);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 33, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 34, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 33, -1, -1 },
     { "appBarLayout_", "LASAppBarLayout;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASAppBarLayoutImpl_AppBarLayoutCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASAppBarLayoutImpl_AppBarLayoutBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASAppBarLayoutImpl_AppBarLayoutParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setScrollInterpolator", "LASAppBarLayout_LayoutParams;LNSObject;", "setId", "setVisible", "Z", "getPlugin", &ASAppBarLayoutImpl_LOCAL_NAME, &ASAppBarLayoutImpl_GROUP_NAME, "LASAppBarLayoutImpl_Layout_scrollFlags;LASAppBarLayoutImpl_AppBarLayoutExt;LASAppBarLayoutImpl_AppBarLayoutCommandBuilder;LASAppBarLayoutImpl_AppBarLayoutBean;LASAppBarLayoutImpl_AppBarLayoutParamsBean;LASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASAppBarLayoutImpl = { "AppBarLayoutImpl", "com.ashera.appbarlayout", ptrTable, methods, fields, 7, 0x1, 32, 8, -1, 35, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setScrollInterpolator", "LASAppBarLayout_LayoutParams;LNSObject;", "setId", "setVisible", "Z", &ASAppBarLayoutImpl_LOCAL_NAME, &ASAppBarLayoutImpl_GROUP_NAME, "LASAppBarLayoutImpl_Layout_scrollFlags;LASAppBarLayoutImpl_AppBarLayoutExt;" };
+  static const J2ObjcClassInfo _ASAppBarLayoutImpl = { "AppBarLayoutImpl", "com.ashera.appbarlayout", ptrTable, methods, fields, 7, 0x1, 27, 4, -1, 34, -1, -1, -1 };
   return &_ASAppBarLayoutImpl;
 }
 
@@ -990,236 +913,6 @@ ASAppBarLayoutImpl_AppBarLayoutExt *create_ASAppBarLayoutImpl_AppBarLayoutExt_in
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutImpl_AppBarLayoutExt)
-
-@implementation ASAppBarLayoutImpl_AppBarLayoutCommandBuilder
-
-- (instancetype)initWithASAppBarLayoutImpl:(ASAppBarLayoutImpl *)outer$ {
-  ASAppBarLayoutImpl_AppBarLayoutCommandBuilder_initWithASAppBarLayoutImpl_(self, outer$);
-  return self;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *)setExpandedWithBoolean:(jboolean)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"expanded"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangBoolean_valueOfWithBoolean_(value)];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandBuilder;", 0x1, 3, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASAppBarLayoutImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(setExpandedWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASAppBarLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASAppBarLayoutImpl;", "execute", "Z", "setExpanded", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/appbarlayout/AppBarLayoutImpl$AppBarLayoutCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASAppBarLayoutImpl_AppBarLayoutCommandBuilder = { "AppBarLayoutCommandBuilder", "com.ashera.appbarlayout", ptrTable, methods, fields, 7, 0x1, 3, 1, 0, -1, -1, 4, -1 };
-  return &_ASAppBarLayoutImpl_AppBarLayoutCommandBuilder;
-}
-
-@end
-
-void ASAppBarLayoutImpl_AppBarLayoutCommandBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *self, ASAppBarLayoutImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *new_ASAppBarLayoutImpl_AppBarLayoutCommandBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASAppBarLayoutImpl_AppBarLayoutCommandBuilder, initWithASAppBarLayoutImpl_, outer$)
-}
-
-ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *create_ASAppBarLayoutImpl_AppBarLayoutCommandBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASAppBarLayoutImpl_AppBarLayoutCommandBuilder, initWithASAppBarLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutImpl_AppBarLayoutCommandBuilder)
-
-@implementation ASAppBarLayoutImpl_AppBarLayoutBean
-
-- (instancetype)initWithASAppBarLayoutImpl:(ASAppBarLayoutImpl *)outer$ {
-  ASAppBarLayoutImpl_AppBarLayoutBean_initWithASAppBarLayoutImpl_(self, outer$);
-  return self;
-}
-
-- (void)setExpandedWithBoolean:(jboolean)value {
-  (void) [((ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setExpandedWithBoolean:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASAppBarLayoutImpl:);
-  methods[1].selector = @selector(setExpandedWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASAppBarLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASAppBarLayoutImpl;", "setExpanded", "Z" };
-  static const J2ObjcClassInfo _ASAppBarLayoutImpl_AppBarLayoutBean = { "AppBarLayoutBean", "com.ashera.appbarlayout", ptrTable, methods, fields, 7, 0x1, 2, 1, 0, -1, -1, -1, -1 };
-  return &_ASAppBarLayoutImpl_AppBarLayoutBean;
-}
-
-@end
-
-void ASAppBarLayoutImpl_AppBarLayoutBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl_AppBarLayoutBean *self, ASAppBarLayoutImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASAppBarLayoutImpl_AppBarLayoutBean *new_ASAppBarLayoutImpl_AppBarLayoutBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASAppBarLayoutImpl_AppBarLayoutBean, initWithASAppBarLayoutImpl_, outer$)
-}
-
-ASAppBarLayoutImpl_AppBarLayoutBean *create_ASAppBarLayoutImpl_AppBarLayoutBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASAppBarLayoutImpl_AppBarLayoutBean, initWithASAppBarLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutImpl_AppBarLayoutBean)
-
-@implementation ASAppBarLayoutImpl_AppBarLayoutParamsBean
-
-- (instancetype)initWithASAppBarLayoutImpl:(ASAppBarLayoutImpl *)outer$ {
-  ASAppBarLayoutImpl_AppBarLayoutParamsBean_initWithASAppBarLayoutImpl_(self, outer$);
-  return self;
-}
-
-- (void)setLayoutScrollFlagsWithASIWidget:(id<ASIWidget>)w
-                             withNSString:(NSString *)value {
-  id<JavaUtilMap> layoutParams = new_JavaUtilHashMap_init();
-  (void) [layoutParams putWithId:@"layoutParams" withId:[((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([this$0_ getParamsBuilder])) reset])) setLayoutScrollFlagsWithNSString:value])) getCommand]];
-  [((id<ASIWidget>) nil_chk(w)) executeCommandWithJavaUtilMap:layoutParams withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-  [((id<ASIFragment>) nil_chk([w getFragment])) remeasure];
-}
-
-- (void)setLayoutScrollInterpolatorWithASIWidget:(id<ASIWidget>)w
-                                    withNSString:(NSString *)value {
-  id<JavaUtilMap> layoutParams = new_JavaUtilHashMap_init();
-  (void) [layoutParams putWithId:@"layoutParams" withId:[((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([((ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *) nil_chk([this$0_ getParamsBuilder])) reset])) setLayoutScrollInterpolatorWithNSString:value])) getCommand]];
-  [((id<ASIWidget>) nil_chk(w)) executeCommandWithJavaUtilMap:layoutParams withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-  [((id<ASIFragment>) nil_chk([w getFragment])) remeasure];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASAppBarLayoutImpl:);
-  methods[1].selector = @selector(setLayoutScrollFlagsWithASIWidget:withNSString:);
-  methods[2].selector = @selector(setLayoutScrollInterpolatorWithASIWidget:withNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASAppBarLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASAppBarLayoutImpl;", "setLayoutScrollFlags", "LASIWidget;LNSString;", "setLayoutScrollInterpolator" };
-  static const J2ObjcClassInfo _ASAppBarLayoutImpl_AppBarLayoutParamsBean = { "AppBarLayoutParamsBean", "com.ashera.appbarlayout", ptrTable, methods, fields, 7, 0x1, 3, 1, 0, -1, -1, -1, -1 };
-  return &_ASAppBarLayoutImpl_AppBarLayoutParamsBean;
-}
-
-@end
-
-void ASAppBarLayoutImpl_AppBarLayoutParamsBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl_AppBarLayoutParamsBean *self, ASAppBarLayoutImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASAppBarLayoutImpl_AppBarLayoutParamsBean *new_ASAppBarLayoutImpl_AppBarLayoutParamsBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASAppBarLayoutImpl_AppBarLayoutParamsBean, initWithASAppBarLayoutImpl_, outer$)
-}
-
-ASAppBarLayoutImpl_AppBarLayoutParamsBean *create_ASAppBarLayoutImpl_AppBarLayoutParamsBean_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASAppBarLayoutImpl_AppBarLayoutParamsBean, initWithASAppBarLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutImpl_AppBarLayoutParamsBean)
-
-@implementation ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder
-
-- (instancetype)initWithASAppBarLayoutImpl:(ASAppBarLayoutImpl *)outer$ {
-  ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder_initWithASAppBarLayoutImpl_(self, outer$);
-  return self;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *)setLayoutScrollFlagsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"layout_scrollFlags"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *)setLayoutScrollInterpolatorWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"layout_scrollInterpolator"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;", 0x1, 3, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASAppBarLayoutImpl:);
-  methods[1].selector = @selector(setLayoutScrollFlagsWithNSString:);
-  methods[2].selector = @selector(setLayoutScrollInterpolatorWithNSString:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASAppBarLayoutImpl;", "setLayoutScrollFlags", "LNSString;", "setLayoutScrollInterpolator", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/appbarlayout/AppBarLayoutImpl$AppBarLayoutCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder = { "AppBarLayoutCommandParamsBuilder", "com.ashera.appbarlayout", ptrTable, methods, NULL, 7, 0x1, 3, 0, 0, -1, -1, 4, -1 };
-  return &_ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder;
-}
-
-@end
-
-void ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *self, ASAppBarLayoutImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *new_ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder, initWithASAppBarLayoutImpl_, outer$)
-}
-
-ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder *create_ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder_initWithASAppBarLayoutImpl_(ASAppBarLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder, initWithASAppBarLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutImpl_AppBarLayoutCommandParamsBuilder)
 
 @implementation ASAppBarLayoutImpl_$Lambda$1
 

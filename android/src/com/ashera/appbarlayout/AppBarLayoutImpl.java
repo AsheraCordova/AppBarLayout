@@ -640,11 +640,16 @@ Context context = (Context) fragment.getRootActivity();
 
 private void setScrollInterpolator(com.google.android.material.appbar.AppBarLayout.LayoutParams layoutParams, Object objValue) {
 	String value = (String) objValue;
-	String key1 = value.replaceFirst("@anim/", "");
-	Context context = (Context) getFragment().getRootActivity();
-	int identifier = context.getResources().getIdentifier(key1, "anim", context.getPackageName());
-	android.view.animation.Interpolator interpolator = android.view.animation.AnimationUtils.loadInterpolator(context, identifier);
-	layoutParams.setScrollInterpolator(interpolator);
+	String inlineResource = fragment.getInlineResource(value);
+	if (fragment.getRootDirectory() == null && inlineResource == null) {
+		String key1 = value.replaceFirst("@anim/", "");
+		Context context = (Context) getFragment().getRootActivity();
+		int identifier = context.getResources().getIdentifier(key1, "anim", context.getPackageName());
+		android.view.animation.Interpolator interpolator = android.view.animation.AnimationUtils.loadInterpolator(context, identifier);
+		layoutParams.setScrollInterpolator(interpolator);
+	} else {
+		layoutParams.setScrollInterpolator(ViewImpl.getInterpolator(this, objValue));
+	}
 	
 }
 }

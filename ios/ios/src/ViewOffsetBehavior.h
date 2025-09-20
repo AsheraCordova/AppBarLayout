@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\ViewOffsetBehavior.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewOffsetBehavior")
@@ -28,6 +29,8 @@
 
 @class ADView;
 @class ADXCoordinatorLayout;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief Behavior will automatically sets up a <code>ViewOffsetHelper</code> on a <code>View</code>.
@@ -38,31 +41,31 @@
 
 - (instancetype)initPackagePrivate;
 
-- (jint)getLeftAndRightOffset;
+- (int32_t)getLeftAndRightOffset;
 
-- (jint)getTopAndBottomOffset;
+- (int32_t)getTopAndBottomOffset;
 
-- (jboolean)isHorizontalOffsetEnabled;
+- (bool)isHorizontalOffsetEnabled;
 
-- (jboolean)isVerticalOffsetEnabled;
+- (bool)isVerticalOffsetEnabled;
 
-- (jboolean)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                       withADView:(ADView *)child
-                                          withInt:(jint)layoutDirection;
+- (bool)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                   withADView:(ADView *)child
+                                      withInt:(int32_t)layoutDirection;
 
-- (void)setHorizontalOffsetEnabledWithBoolean:(jboolean)horizontalOffsetEnabled;
+- (void)setHorizontalOffsetEnabledWithBoolean:(bool)horizontalOffsetEnabled;
 
-- (jboolean)setLeftAndRightOffsetWithInt:(jint)offset;
+- (bool)setLeftAndRightOffsetWithInt:(int32_t)offset;
 
-- (jboolean)setTopAndBottomOffsetWithInt:(jint)offset;
+- (bool)setTopAndBottomOffsetWithInt:(int32_t)offset;
 
-- (void)setVerticalOffsetEnabledWithBoolean:(jboolean)verticalOffsetEnabled;
+- (void)setVerticalOffsetEnabledWithBoolean:(bool)verticalOffsetEnabled;
 
 #pragma mark Protected
 
 - (void)layoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                  withADView:(ADView *)child
-                                    withInt:(jint)layoutDirection;
+                                    withInt:(int32_t)layoutDirection;
 
 // Disallowed inherited constructors, do not use.
 
@@ -81,6 +84,7 @@ FOUNDATION_EXPORT ASViewOffsetBehavior *create_ASViewOffsetBehavior_initPackageP
 J2OBJC_TYPE_LITERAL_HEADER(ASViewOffsetBehavior)
 
 @compatibility_alias ComGoogleAndroidMaterialAppbarViewOffsetBehavior ASViewOffsetBehavior;
+
 
 #endif
 

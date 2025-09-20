@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\ViewOffsetHelper.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewOffsetHelper")
@@ -17,6 +18,8 @@
 #define ASViewOffsetHelper_
 
 @class ADView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief Utility helper for moving a <code>View</code> around using <code>View.offsetLeftAndRight(int)</code> and 
@@ -30,35 +33,35 @@
 
 - (instancetype)initPackagePrivateWithADView:(ADView *)view;
 
-- (jint)getLayoutLeft;
+- (int32_t)getLayoutLeft;
 
-- (jint)getLayoutTop;
+- (int32_t)getLayoutTop;
 
-- (jint)getLeftAndRightOffset;
+- (int32_t)getLeftAndRightOffset;
 
-- (jint)getTopAndBottomOffset;
+- (int32_t)getTopAndBottomOffset;
 
-- (jboolean)isHorizontalOffsetEnabled;
+- (bool)isHorizontalOffsetEnabled;
 
-- (jboolean)isVerticalOffsetEnabled;
+- (bool)isVerticalOffsetEnabled;
 
-- (void)setHorizontalOffsetEnabledWithBoolean:(jboolean)horizontalOffsetEnabled;
+- (void)setHorizontalOffsetEnabledWithBoolean:(bool)horizontalOffsetEnabled;
 
 /*!
  @brief Set the left and right offset for this <code>ViewOffsetHelper</code>'s view.
  @param offset the offset in px.
  @return true if the offset has changed
  */
-- (jboolean)setLeftAndRightOffsetWithInt:(jint)offset;
+- (bool)setLeftAndRightOffsetWithInt:(int32_t)offset;
 
 /*!
  @brief Set the top and bottom offset for this <code>ViewOffsetHelper</code>'s view.
  @param offset the offset in px.
  @return true if the offset has changed
  */
-- (jboolean)setTopAndBottomOffsetWithInt:(jint)offset;
+- (bool)setTopAndBottomOffsetWithInt:(int32_t)offset;
 
-- (void)setVerticalOffsetEnabledWithBoolean:(jboolean)verticalOffsetEnabled;
+- (void)setVerticalOffsetEnabledWithBoolean:(bool)verticalOffsetEnabled;
 
 #pragma mark Package-Private
 
@@ -83,6 +86,7 @@ FOUNDATION_EXPORT ASViewOffsetHelper *create_ASViewOffsetHelper_initPackagePriva
 J2OBJC_TYPE_LITERAL_HEADER(ASViewOffsetHelper)
 
 @compatibility_alias ComGoogleAndroidMaterialAppbarViewOffsetHelper ASViewOffsetHelper;
+
 
 #endif
 

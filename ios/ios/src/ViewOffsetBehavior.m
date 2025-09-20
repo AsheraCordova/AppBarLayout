@@ -3,18 +3,31 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\ViewOffsetBehavior.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CoordinatorLayout.h"
 #include "J2ObjC_source.h"
 #include "View.h"
 #include "ViewOffsetBehavior.h"
 #include "ViewOffsetHelper.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASViewOffsetBehavior () {
  @public
   ASViewOffsetHelper *viewOffsetHelper_;
-  jint tempTopBottomOffset_;
-  jint tempLeftRightOffset_;
+  int32_t tempTopBottomOffset_;
+  int32_t tempLeftRightOffset_;
 }
 
 @end
@@ -28,9 +41,9 @@ J2OBJC_FIELD_SETTER(ASViewOffsetBehavior, viewOffsetHelper_, ASViewOffsetHelper 
   return self;
 }
 
-- (jboolean)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                       withADView:(ADView *)child
-                                          withInt:(jint)layoutDirection {
+- (bool)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                   withADView:(ADView *)child
+                                      withInt:(int32_t)layoutDirection {
   [self layoutChildWithADXCoordinatorLayout:parent withADView:child withInt:layoutDirection];
   if (viewOffsetHelper_ == nil) {
     viewOffsetHelper_ = new_ASViewOffsetHelper_initPackagePrivateWithADView_(child);
@@ -50,11 +63,11 @@ J2OBJC_FIELD_SETTER(ASViewOffsetBehavior, viewOffsetHelper_, ASViewOffsetHelper 
 
 - (void)layoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                  withADView:(ADView *)child
-                                    withInt:(jint)layoutDirection {
+                                    withInt:(int32_t)layoutDirection {
   [((ADXCoordinatorLayout *) nil_chk(parent)) onLayoutChildWithADView:child withInt:layoutDirection];
 }
 
-- (jboolean)setTopAndBottomOffsetWithInt:(jint)offset {
+- (bool)setTopAndBottomOffsetWithInt:(int32_t)offset {
   if (viewOffsetHelper_ != nil) {
     return [viewOffsetHelper_ setTopAndBottomOffsetWithInt:offset];
   }
@@ -64,7 +77,7 @@ J2OBJC_FIELD_SETTER(ASViewOffsetBehavior, viewOffsetHelper_, ASViewOffsetHelper 
   return false;
 }
 
-- (jboolean)setLeftAndRightOffsetWithInt:(jint)offset {
+- (bool)setLeftAndRightOffsetWithInt:(int32_t)offset {
   if (viewOffsetHelper_ != nil) {
     return [viewOffsetHelper_ setLeftAndRightOffsetWithInt:offset];
   }
@@ -74,31 +87,31 @@ J2OBJC_FIELD_SETTER(ASViewOffsetBehavior, viewOffsetHelper_, ASViewOffsetHelper 
   return false;
 }
 
-- (jint)getTopAndBottomOffset {
+- (int32_t)getTopAndBottomOffset {
   return viewOffsetHelper_ != nil ? [viewOffsetHelper_ getTopAndBottomOffset] : 0;
 }
 
-- (jint)getLeftAndRightOffset {
+- (int32_t)getLeftAndRightOffset {
   return viewOffsetHelper_ != nil ? [viewOffsetHelper_ getLeftAndRightOffset] : 0;
 }
 
-- (void)setVerticalOffsetEnabledWithBoolean:(jboolean)verticalOffsetEnabled {
+- (void)setVerticalOffsetEnabledWithBoolean:(bool)verticalOffsetEnabled {
   if (viewOffsetHelper_ != nil) {
     [viewOffsetHelper_ setVerticalOffsetEnabledWithBoolean:verticalOffsetEnabled];
   }
 }
 
-- (jboolean)isVerticalOffsetEnabled {
+- (bool)isVerticalOffsetEnabled {
   return viewOffsetHelper_ != nil && [viewOffsetHelper_ isVerticalOffsetEnabled];
 }
 
-- (void)setHorizontalOffsetEnabledWithBoolean:(jboolean)horizontalOffsetEnabled {
+- (void)setHorizontalOffsetEnabledWithBoolean:(bool)horizontalOffsetEnabled {
   if (viewOffsetHelper_ != nil) {
     [viewOffsetHelper_ setHorizontalOffsetEnabledWithBoolean:horizontalOffsetEnabled];
   }
 }
 
-- (jboolean)isHorizontalOffsetEnabled {
+- (bool)isHorizontalOffsetEnabled {
   return viewOffsetHelper_ != nil && [viewOffsetHelper_ isHorizontalOffsetEnabled];
 }
 

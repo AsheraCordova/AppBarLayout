@@ -3,34 +3,44 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\HeaderBehavior.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CoordinatorLayout.h"
 #include "HeaderBehavior.h"
 #include "J2ObjC_source.h"
 #include "MathUtils.h"
 #include "View.h"
 #include "ViewOffsetBehavior.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
 
-@protocol JavaLangRunnable;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASHeaderBehavior () {
  @public
   id<JavaLangRunnable> flingRunnable_;
-  jboolean isBeingDragged_;
-  jint activePointerId_;
-  jint lastMotionY_;
-  jint touchSlop_;
+  bool isBeingDragged_;
+  int32_t activePointerId_;
+  int32_t lastMotionY_;
+  int32_t touchSlop_;
 }
 
 @end
 
 J2OBJC_FIELD_SETTER(ASHeaderBehavior, flingRunnable_, id<JavaLangRunnable>)
 
-inline jint ASHeaderBehavior_get_INVALID_POINTER(void);
+inline int32_t ASHeaderBehavior_get_INVALID_POINTER(void);
 #define ASHeaderBehavior_INVALID_POINTER -1
-J2OBJC_STATIC_FIELD_CONSTANT(ASHeaderBehavior, INVALID_POINTER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASHeaderBehavior, INVALID_POINTER, int32_t)
 
 @implementation ASHeaderBehavior
 
@@ -39,19 +49,19 @@ J2OBJC_STATIC_FIELD_CONSTANT(ASHeaderBehavior, INVALID_POINTER, jint)
   return self;
 }
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                              withADView:(ADView *)header
-                                                 withInt:(jint)newOffset {
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                 withADView:(ADView *)header
+                                                    withInt:(int32_t)newOffset {
   return [self setHeaderTopBottomOffsetWithADXCoordinatorLayout:parent withADView:header withInt:newOffset withInt:JavaLangInteger_MIN_VALUE withInt:JavaLangInteger_MAX_VALUE];
 }
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                              withADView:(ADView *)header
-                                                 withInt:(jint)newOffset
-                                                 withInt:(jint)minOffset
-                                                 withInt:(jint)maxOffset {
-  jint curOffset = [self getTopAndBottomOffset];
-  jint consumed = 0;
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                 withADView:(ADView *)header
+                                                    withInt:(int32_t)newOffset
+                                                    withInt:(int32_t)minOffset
+                                                    withInt:(int32_t)maxOffset {
+  int32_t curOffset = [self getTopAndBottomOffset];
+  int32_t consumed = 0;
   if (minOffset != 0 && curOffset >= minOffset && curOffset <= maxOffset) {
     newOffset = ADMathUtils_clampWithInt_withInt_withInt_(newOffset, minOffset, maxOffset);
     if (curOffset != newOffset) {
@@ -62,15 +72,15 @@ J2OBJC_STATIC_FIELD_CONSTANT(ASHeaderBehavior, INVALID_POINTER, jint)
   return consumed;
 }
 
-- (jint)getTopBottomOffsetForScrollingSibling {
+- (int32_t)getTopBottomOffsetForScrollingSibling {
   return [self getTopAndBottomOffset];
 }
 
-- (jint)scrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                            withADView:(ADView *)header
-                               withInt:(jint)dy
-                               withInt:(jint)minOffset
-                               withInt:(jint)maxOffset {
+- (int32_t)scrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                               withADView:(ADView *)header
+                                  withInt:(int32_t)dy
+                                  withInt:(int32_t)minOffset
+                                  withInt:(int32_t)maxOffset {
   return [self setHeaderTopBottomOffsetWithADXCoordinatorLayout:coordinatorLayout withADView:header withInt:[self getTopBottomOffsetForScrollingSibling] - dy withInt:minOffset withInt:maxOffset];
 }
 
@@ -78,15 +88,15 @@ J2OBJC_STATIC_FIELD_CONSTANT(ASHeaderBehavior, INVALID_POINTER, jint)
                                      withADView:(ADView *)layout {
 }
 
-- (jboolean)canDragViewWithADView:(ADView *)view {
+- (bool)canDragViewWithADView:(ADView *)view {
   return false;
 }
 
-- (jint)getMaxDragOffsetWithADView:(ADView *)view {
+- (int32_t)getMaxDragOffsetWithADView:(ADView *)view {
   return -[((ADView *) nil_chk(view)) getHeight];
 }
 
-- (jint)getScrollRangeForDragFlingWithADView:(ADView *)view {
+- (int32_t)getScrollRangeForDragFlingWithADView:(ADView *)view {
   return [((ADView *) nil_chk(view)) getHeight];
 }
 

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\AppBarLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AbsListView.h"
 #include "AppBarLayout.h"
 #include "CoordinatorLayout.h"
@@ -24,6 +29,8 @@
 #include "ViewGroup.h"
 #include "ViewParent.h"
 #include "WindowInsetsCompat.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Math.h"
@@ -31,51 +38,54 @@
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 
-@class JavaLangRefWeakReference;
-@protocol JavaUtilList;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASAppBarLayout () {
  @public
-  jint currentOffset_;
-  jint totalScrollRange_;
-  jint downPreScrollRange_;
-  jint downScrollRange_;
-  jboolean haveChildWithInterpolator_;
-  jint pendingAction_;
+  int32_t currentOffset_;
+  int32_t totalScrollRange_;
+  int32_t downPreScrollRange_;
+  int32_t downScrollRange_;
+  bool haveChildWithInterpolator_;
+  int32_t pendingAction_;
   ADXWindowInsetsCompat *lastInsets_;
   id<JavaUtilList> listeners_;
-  jboolean liftableOverride_;
-  jboolean liftable_;
-  jboolean lifted_;
-  jboolean liftOnScroll_;
-  jint liftOnScrollTargetViewId_;
+  bool liftableOverride_;
+  bool liftable_;
+  bool lifted_;
+  bool liftOnScroll_;
+  int32_t liftOnScrollTargetViewId_;
   JavaLangRefWeakReference *liftOnScrollTargetView_;
-  jboolean hasLiftOnScrollColor_;
+  bool hasLiftOnScrollColor_;
   id<JavaUtilList> liftOnScrollListeners_;
   ADDrawable *statusBarForeground_;
-  jfloat appBarElevation_;
+  float appBarElevation_;
   ASAppBarLayout_Behavior *behavior_;
 }
 
-- (jboolean)hasCollapsibleChild;
+- (bool)hasCollapsibleChild;
 
-- (void)setExpandedWithBoolean:(jboolean)expanded
-                   withBoolean:(jboolean)animate
-                   withBoolean:(jboolean)force;
+- (void)setExpandedWithBoolean:(bool)expanded
+                   withBoolean:(bool)animate
+                   withBoolean:(bool)force;
 
-- (jboolean)setLiftableStateWithBoolean:(jboolean)liftable;
+- (bool)setLiftableStateWithBoolean:(bool)liftable;
 
 - (ADView *)findLiftOnScrollTargetViewWithADView:(ADView *)defaultScrollingView;
 
-- (jboolean)shouldOffsetFirstChild;
+- (bool)shouldOffsetFirstChild;
 
 - (void)invalidateScrollRanges;
 
-- (jboolean)isLiftOnScrollCompatibleBackground;
+- (bool)isLiftOnScrollCompatibleBackground;
 
-- (void)startLiftOnScrollColorAnimationWithFloat:(jfloat)fromValue
-                                       withFloat:(jfloat)toValue;
+- (void)startLiftOnScrollColorAnimationWithFloat:(float)fromValue
+                                       withFloat:(float)toValue;
 
 @end
 
@@ -86,29 +96,29 @@ J2OBJC_FIELD_SETTER(ASAppBarLayout, liftOnScrollListeners_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASAppBarLayout, statusBarForeground_, ADDrawable *)
 J2OBJC_FIELD_SETTER(ASAppBarLayout, behavior_, ASAppBarLayout_Behavior *)
 
-inline jint ASAppBarLayout_get_INVALID_SCROLL_RANGE(void);
+inline int32_t ASAppBarLayout_get_INVALID_SCROLL_RANGE(void);
 #define ASAppBarLayout_INVALID_SCROLL_RANGE -1
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, INVALID_SCROLL_RANGE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, INVALID_SCROLL_RANGE, int32_t)
 
-__attribute__((unused)) static jboolean ASAppBarLayout_hasCollapsibleChild(ASAppBarLayout *self);
+__attribute__((unused)) static bool ASAppBarLayout_hasCollapsibleChild(ASAppBarLayout *self);
 
-__attribute__((unused)) static void ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(ASAppBarLayout *self, jboolean expanded, jboolean animate, jboolean force);
+__attribute__((unused)) static void ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(ASAppBarLayout *self, bool expanded, bool animate, bool force);
 
-__attribute__((unused)) static jint ASAppBarLayout_getTotalScrollRange(ASAppBarLayout *self);
+__attribute__((unused)) static int32_t ASAppBarLayout_getTotalScrollRange(ASAppBarLayout *self);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_setLiftableStateWithBoolean_(ASAppBarLayout *self, jboolean liftable);
+__attribute__((unused)) static bool ASAppBarLayout_setLiftableStateWithBoolean_(ASAppBarLayout *self, bool liftable);
 
 __attribute__((unused)) static ADView *ASAppBarLayout_findLiftOnScrollTargetViewWithADView_(ASAppBarLayout *self, ADView *defaultScrollingView);
 
-__attribute__((unused)) static jint ASAppBarLayout_getTopInset(ASAppBarLayout *self);
+__attribute__((unused)) static int32_t ASAppBarLayout_getTopInset(ASAppBarLayout *self);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_shouldOffsetFirstChild(ASAppBarLayout *self);
+__attribute__((unused)) static bool ASAppBarLayout_shouldOffsetFirstChild(ASAppBarLayout *self);
 
 __attribute__((unused)) static void ASAppBarLayout_invalidateScrollRanges(ASAppBarLayout *self);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_isLiftOnScrollCompatibleBackground(ASAppBarLayout *self);
+__attribute__((unused)) static bool ASAppBarLayout_isLiftOnScrollCompatibleBackground(ASAppBarLayout *self);
 
-__attribute__((unused)) static void ASAppBarLayout_startLiftOnScrollColorAnimationWithFloat_withFloat_(ASAppBarLayout *self, jfloat fromValue, jfloat toValue);
+__attribute__((unused)) static void ASAppBarLayout_startLiftOnScrollColorAnimationWithFloat_withFloat_(ASAppBarLayout *self, float fromValue, float toValue);
 
 @interface ASAppBarLayout_BaseOnOffsetChangedListener : NSObject
 
@@ -133,67 +143,67 @@ J2OBJC_FIELD_SETTER(ASAppBarLayout_LayoutParams, scrollEffect_, ASAppBarLayout_C
 
 @interface ASAppBarLayout_BaseBehavior () {
  @public
-  jint offsetDelta_;
-  jint lastStartedType_;
+  int32_t offsetDelta_;
+  int32_t lastStartedType_;
   ADValueAnimator *offsetAnimator_;
   ASAppBarLayout_SavedState *savedState_;
   JavaLangRefWeakReference *lastNestedScrollingChildRef_;
   ASAppBarLayout_BaseBehavior_BaseDragCallback *onDragCallback_;
-  jboolean coordinatorLayoutA11yScrollable_;
+  bool coordinatorLayoutA11yScrollable_;
 }
 
-- (jboolean)canScrollChildrenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                   withASAppBarLayout:(ASAppBarLayout *)child
-                                           withADView:(ADView *)directTargetChild;
+- (bool)canScrollChildrenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                               withASAppBarLayout:(ASAppBarLayout *)child
+                                       withADView:(ADView *)directTargetChild;
 
 - (void)animateOffsetToWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                              withASAppBarLayout:(ASAppBarLayout *)child
-                                        withInt:(jint)offset
-                                      withFloat:(jfloat)velocity;
+                                        withInt:(int32_t)offset
+                                      withFloat:(float)velocity;
 
 - (void)animateOffsetWithDurationWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                        withASAppBarLayout:(ASAppBarLayout *)child
-                                                  withInt:(jint)offset
-                                                  withInt:(jint)duration;
+                                                  withInt:(int32_t)offset
+                                                  withInt:(int32_t)duration;
 
-- (jint)getChildIndexOnOffsetWithASAppBarLayout:(ASAppBarLayout *)abl
-                                        withInt:(jint)offset;
+- (int32_t)getChildIndexOnOffsetWithASAppBarLayout:(ASAppBarLayout *)abl
+                                           withInt:(int32_t)offset;
 
 - (void)snapToChildIfNeededWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                  withASAppBarLayout:(ASAppBarLayout *)abl;
 
-- (jint)calculateSnapOffsetWithInt:(jint)value
-                           withInt:(jint)bottom
-                           withInt:(jint)top;
+- (int32_t)calculateSnapOffsetWithInt:(int32_t)value
+                              withInt:(int32_t)bottom
+                              withInt:(int32_t)top;
 
-+ (jboolean)checkFlagWithInt:(jint)flags
-                     withInt:(jint)check;
++ (bool)checkFlagWithInt:(int32_t)flags
+                 withInt:(int32_t)check;
 
 - (void)updateAccessibilityActionsWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                         withASAppBarLayout:(ASAppBarLayout *)appBarLayout;
 
 - (ADView *)getChildWithScrollingBehaviorWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout;
 
-- (jboolean)childrenHaveScrollFlagsWithASAppBarLayout:(ASAppBarLayout *)appBarLayout;
+- (bool)childrenHaveScrollFlagsWithASAppBarLayout:(ASAppBarLayout *)appBarLayout;
 
-- (jboolean)addAccessibilityScrollActionsWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                                               withASAppBarLayout:(ASAppBarLayout *)appBarLayout
-                                                       withADView:(ADView *)scrollingView;
+- (bool)addAccessibilityScrollActionsWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                                           withASAppBarLayout:(ASAppBarLayout *)appBarLayout
+                                                   withADView:(ADView *)scrollingView;
 
-- (jint)interpolateOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
-                                    withInt:(jint)offset;
+- (int32_t)interpolateOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
+                                       withInt:(int32_t)offset;
 
 - (void)updateAppBarLayoutDrawableStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                              withASAppBarLayout:(ASAppBarLayout *)layout
-                                                        withInt:(jint)offset
-                                                        withInt:(jint)direction
-                                                    withBoolean:(jboolean)forceJump;
+                                                        withInt:(int32_t)offset
+                                                        withInt:(int32_t)direction
+                                                    withBoolean:(bool)forceJump;
 
-- (jboolean)shouldJumpElevationStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                          withASAppBarLayout:(ASAppBarLayout *)layout;
+- (bool)shouldJumpElevationStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                      withASAppBarLayout:(ASAppBarLayout *)layout;
 
 + (ADView *)getAppBarChildOnOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
-                                             withInt:(jint)offset;
+                                             withInt:(int32_t)offset;
 
 - (ADView *)findFirstScrollingChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent;
 
@@ -204,39 +214,39 @@ J2OBJC_FIELD_SETTER(ASAppBarLayout_BaseBehavior, savedState_, ASAppBarLayout_Sav
 J2OBJC_FIELD_SETTER(ASAppBarLayout_BaseBehavior, lastNestedScrollingChildRef_, JavaLangRefWeakReference *)
 J2OBJC_FIELD_SETTER(ASAppBarLayout_BaseBehavior, onDragCallback_, ASAppBarLayout_BaseBehavior_BaseDragCallback *)
 
-inline jint ASAppBarLayout_BaseBehavior_get_MAX_OFFSET_ANIMATION_DURATION(void);
+inline int32_t ASAppBarLayout_BaseBehavior_get_MAX_OFFSET_ANIMATION_DURATION(void);
 #define ASAppBarLayout_BaseBehavior_MAX_OFFSET_ANIMATION_DURATION 600
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_BaseBehavior, MAX_OFFSET_ANIMATION_DURATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_BaseBehavior, MAX_OFFSET_ANIMATION_DURATION, int32_t)
 
-__attribute__((unused)) static jboolean ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *child, ADView *directTargetChild);
+__attribute__((unused)) static bool ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *child, ADView *directTargetChild);
 
-__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, jint offset, jfloat velocity);
+__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, int32_t offset, float velocity);
 
-__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, jint offset, jint duration);
+__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, int32_t offset, int32_t duration);
 
-__attribute__((unused)) static jint ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *abl, jint offset);
+__attribute__((unused)) static int32_t ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *abl, int32_t offset);
 
 __attribute__((unused)) static void ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *abl);
 
-__attribute__((unused)) static jint ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, jint value, jint bottom, jint top);
+__attribute__((unused)) static int32_t ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, int32_t value, int32_t bottom, int32_t top);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(jint flags, jint check);
+__attribute__((unused)) static bool ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(int32_t flags, int32_t check);
 
 __attribute__((unused)) static void ASAppBarLayout_BaseBehavior_updateAccessibilityActionsWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *appBarLayout);
 
 __attribute__((unused)) static ADView *ASAppBarLayout_BaseBehavior_getChildWithScrollingBehaviorWithADXCoordinatorLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *appBarLayout);
+__attribute__((unused)) static bool ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *appBarLayout);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *appBarLayout, ADView *scrollingView);
+__attribute__((unused)) static bool ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *appBarLayout, ADView *scrollingView);
 
-__attribute__((unused)) static jint ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *layout, jint offset);
+__attribute__((unused)) static int32_t ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *layout, int32_t offset);
 
-__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_withBoolean_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout, jint offset, jint direction, jboolean forceJump);
+__attribute__((unused)) static void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_withBoolean_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout, int32_t offset, int32_t direction, bool forceJump);
 
-__attribute__((unused)) static jboolean ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout);
+__attribute__((unused)) static bool ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout);
 
-__attribute__((unused)) static ADView *ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout *layout, jint offset);
+__attribute__((unused)) static ADView *ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout *layout, int32_t offset);
 
 __attribute__((unused)) static ADView *ASAppBarLayout_BaseBehavior_findFirstScrollingChildWithADXCoordinatorLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent);
 
@@ -263,12 +273,13 @@ __attribute__((unused)) static ASAppBarLayout_BaseBehavior_1 *new_ASAppBarLayout
 
 __attribute__((unused)) static ASAppBarLayout_BaseBehavior_1 *create_ASAppBarLayout_BaseBehavior_1_initWithASAppBarLayout_BaseBehavior_withADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *outer$, ADXCoordinatorLayout *capture$0, ASAppBarLayout *capture$1);
 
+
 @interface ASAppBarLayout_ScrollingViewBehavior ()
 
 - (void)offsetChildAsNeededWithADView:(ADView *)child
                            withADView:(ADView *)dependency;
 
-+ (jint)getAppBarLayoutOffsetWithASAppBarLayout:(ASAppBarLayout *)abl;
++ (int32_t)getAppBarLayoutOffsetWithASAppBarLayout:(ASAppBarLayout *)abl;
 
 - (void)updateLiftedStateIfNeededWithADView:(ADView *)child
                                  withADView:(ADView *)dependency;
@@ -277,7 +288,7 @@ __attribute__((unused)) static ASAppBarLayout_BaseBehavior_1 *create_ASAppBarLay
 
 __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_offsetChildAsNeededWithADView_withADView_(ASAppBarLayout_ScrollingViewBehavior *self, ADView *child, ADView *dependency);
 
-__attribute__((unused)) static jint ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(ASAppBarLayout *abl);
+__attribute__((unused)) static int32_t ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(ASAppBarLayout *abl);
 
 __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateLiftedStateIfNeededWithADView_withADView_(ASAppBarLayout_ScrollingViewBehavior *self, ADView *child, ADView *dependency);
 
@@ -310,7 +321,7 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   [((id<JavaUtilList>) nil_chk(liftOnScrollListeners_)) addWithId:liftOnScrollListener];
 }
 
-- (jboolean)removeLiftOnScrollListenerWithASAppBarLayout_LiftOnScrollListener:(id<ASAppBarLayout_LiftOnScrollListener>)liftOnScrollListener {
+- (bool)removeLiftOnScrollListenerWithASAppBarLayout_LiftOnScrollListener:(id<ASAppBarLayout_LiftOnScrollListener>)liftOnScrollListener {
   return [((id<JavaUtilList>) nil_chk(liftOnScrollListeners_)) removeWithId:liftOnScrollListener];
 }
 
@@ -318,12 +329,12 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   [((id<JavaUtilList>) nil_chk(liftOnScrollListeners_)) clear];
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
-  jint heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
+  int32_t heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
   if (heightMode != ADView_MeasureSpec_EXACTLY && ADXViewCompat_getFitsSystemWindowsWithADView_(self) && ASAppBarLayout_shouldOffsetFirstChild(self)) {
-    jint newHeight = [self getMeasuredHeight];
+    int32_t newHeight = [self getMeasuredHeight];
     switch (heightMode) {
       case ADView_MeasureSpec_AT_MOST:
       newHeight = ADMathUtils_clampWithInt_withInt_withInt_([self getMeasuredHeight] + ASAppBarLayout_getTopInset(self), 0, ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec));
@@ -340,21 +351,21 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   ASAppBarLayout_invalidateScrollRanges(self);
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   if (ADXViewCompat_getFitsSystemWindowsWithADView_(self) && ASAppBarLayout_shouldOffsetFirstChild(self)) {
-    jint topInset = ASAppBarLayout_getTopInset(self);
-    for (jint z = [self getChildCount] - 1; z >= 0; z--) {
+    int32_t topInset = ASAppBarLayout_getTopInset(self);
+    for (int32_t z = [self getChildCount] - 1; z >= 0; z--) {
       ADXViewCompat_offsetTopAndBottomWithADView_withInt_([self getChildAtWithInt:z], topInset);
     }
   }
   ASAppBarLayout_invalidateScrollRanges(self);
   haveChildWithInterpolator_ = false;
-  for (jint i = 0, z = [self getChildCount]; i < z; i++) {
+  for (int32_t i = 0, z = [self getChildCount]; i < z; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ASAppBarLayout_LayoutParams *childLp = (ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(child)) getLayoutParams], [ASAppBarLayout_LayoutParams class]);
     id<ADInterpolator> interpolator = [((ASAppBarLayout_LayoutParams *) nil_chk(childLp)) getScrollInterpolator];
@@ -371,11 +382,11 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   }
 }
 
-- (jboolean)hasCollapsibleChild {
+- (bool)hasCollapsibleChild {
   return ASAppBarLayout_hasCollapsibleChild(self);
 }
 
-- (void)setOrientationWithInt:(jint)orientation {
+- (void)setOrientationWithInt:(int32_t)orientation {
   if (orientation != ADLinearLayout_VERTICAL) {
     @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"AppBarLayout is always vertical and does not support horizontal orientation");
   }
@@ -387,22 +398,22 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return behavior_;
 }
 
-- (void)setExpandedWithBoolean:(jboolean)expanded {
+- (void)setExpandedWithBoolean:(bool)expanded {
   [self setExpandedWithBoolean:expanded withBoolean:ADXViewCompat_isLaidOutWithADView_(self)];
 }
 
-- (void)setExpandedWithBoolean:(jboolean)expanded
-                   withBoolean:(jboolean)animate {
+- (void)setExpandedWithBoolean:(bool)expanded
+                   withBoolean:(bool)animate {
   ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(self, expanded, animate, true);
 }
 
-- (void)setExpandedWithBoolean:(jboolean)expanded
-                   withBoolean:(jboolean)animate
-                   withBoolean:(jboolean)force {
+- (void)setExpandedWithBoolean:(bool)expanded
+                   withBoolean:(bool)animate
+                   withBoolean:(bool)force {
   ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(self, expanded, animate, force);
 }
 
-- (jboolean)checkLayoutParamsWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p {
+- (bool)checkLayoutParamsWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p {
   return [p isKindOfClass:[ASAppBarLayout_LayoutParams class]];
 }
 
@@ -410,37 +421,37 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return new_ASAppBarLayout_LayoutParams_initWithInt_withInt_(ADViewGroup_LayoutParams_MATCH_PARENT, ADViewGroup_LayoutParams_WRAP_CONTENT);
 }
 
-- (jboolean)hasChildWithInterpolator {
+- (bool)hasChildWithInterpolator {
   return haveChildWithInterpolator_;
 }
 
-- (jint)getTotalScrollRange {
+- (int32_t)getTotalScrollRange {
   return ASAppBarLayout_getTotalScrollRange(self);
 }
 
-- (jboolean)hasScrollableChildren {
+- (bool)hasScrollableChildren {
   return ASAppBarLayout_getTotalScrollRange(self) != 0;
 }
 
-- (jint)getUpNestedPreScrollRange {
+- (int32_t)getUpNestedPreScrollRange {
   return ASAppBarLayout_getTotalScrollRange(self);
 }
 
-- (jint)getDownNestedPreScrollRange {
+- (int32_t)getDownNestedPreScrollRange {
   if (downPreScrollRange_ != ASAppBarLayout_INVALID_SCROLL_RANGE) {
     return downPreScrollRange_;
   }
-  jint range = 0;
-  for (jint i = [self getChildCount] - 1; i >= 0; i--) {
+  int32_t range = 0;
+  for (int32_t i = [self getChildCount] - 1; i >= 0; i--) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
     }
     ASAppBarLayout_LayoutParams *lp = (ASAppBarLayout_LayoutParams *) cast_chk([child getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint childHeight = [child getMeasuredHeight];
-    jint flags = ((ASAppBarLayout_LayoutParams *) nil_chk(lp))->scrollFlags_;
+    int32_t childHeight = [child getMeasuredHeight];
+    int32_t flags = ((ASAppBarLayout_LayoutParams *) nil_chk(lp))->scrollFlags_;
     if ((flags & ASAppBarLayout_LayoutParams_FLAG_QUICK_RETURN) == ASAppBarLayout_LayoutParams_FLAG_QUICK_RETURN) {
-      jint childRange = lp->topMargin_ + lp->bottomMargin_;
+      int32_t childRange = lp->topMargin_ + lp->bottomMargin_;
       if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED) != 0) {
         childRange += ADXViewCompat_getMinimumHeightWithADView_(child);
       }
@@ -462,20 +473,20 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return downPreScrollRange_ = JavaLangMath_maxWithInt_withInt_(0, range);
 }
 
-- (jint)getDownNestedScrollRange {
+- (int32_t)getDownNestedScrollRange {
   if (downScrollRange_ != ASAppBarLayout_INVALID_SCROLL_RANGE) {
     return downScrollRange_;
   }
-  jint range = 0;
-  for (jint i = 0, z = [self getChildCount]; i < z; i++) {
+  int32_t range = 0;
+  for (int32_t i = 0, z = [self getChildCount]; i < z; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
     }
     ASAppBarLayout_LayoutParams *lp = (ASAppBarLayout_LayoutParams *) cast_chk([child getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint childHeight = [child getMeasuredHeight];
+    int32_t childHeight = [child getMeasuredHeight];
     childHeight += ((ASAppBarLayout_LayoutParams *) nil_chk(lp))->topMargin_ + lp->bottomMargin_;
-    jint flags = lp->scrollFlags_;
+    int32_t flags = lp->scrollFlags_;
     if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) != 0) {
       range += childHeight;
       if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_EXIT_UNTIL_COLLAPSED) != 0) {
@@ -490,10 +501,10 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return downScrollRange_ = JavaLangMath_maxWithInt_withInt_(0, range);
 }
 
-- (void)onOffsetChangedWithInt:(jint)offset {
+- (void)onOffsetChangedWithInt:(int32_t)offset {
   currentOffset_ = offset;
   if (listeners_ != nil) {
-    for (jint i = 0, z = [listeners_ size]; i < z; i++) {
+    for (int32_t i = 0, z = [listeners_ size]; i < z; i++) {
       id<ASAppBarLayout_BaseOnOffsetChangedListener> listener = [((id<JavaUtilList>) nil_chk(listeners_)) getWithInt:i];
       if (listener != nil) {
         [listener onOffsetChangedWithASAppBarLayout:self withInt:offset];
@@ -502,43 +513,43 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   }
 }
 
-- (jint)getMinimumHeightForVisibleOverlappingContent {
-  jint topInset = ASAppBarLayout_getTopInset(self);
-  jint minHeight = ADXViewCompat_getMinimumHeightWithADView_(self);
+- (int32_t)getMinimumHeightForVisibleOverlappingContent {
+  int32_t topInset = ASAppBarLayout_getTopInset(self);
+  int32_t minHeight = ADXViewCompat_getMinimumHeightWithADView_(self);
   if (minHeight != 0) {
     return (minHeight * 2) + topInset;
   }
-  jint childCount = [self getChildCount];
-  jint lastChildMinHeight = childCount >= 1 ? ADXViewCompat_getMinimumHeightWithADView_([self getChildAtWithInt:childCount - 1]) : 0;
+  int32_t childCount = [self getChildCount];
+  int32_t lastChildMinHeight = childCount >= 1 ? ADXViewCompat_getMinimumHeightWithADView_([self getChildAtWithInt:childCount - 1]) : 0;
   if (lastChildMinHeight != 0) {
     return (lastChildMinHeight * 2) + topInset;
   }
   return JreIntDiv([self getHeight], 3);
 }
 
-- (jboolean)setLiftableWithBoolean:(jboolean)liftable {
+- (bool)setLiftableWithBoolean:(bool)liftable {
   self->liftableOverride_ = true;
   return ASAppBarLayout_setLiftableStateWithBoolean_(self, liftable);
 }
 
-- (void)setLiftableOverrideEnabledWithBoolean:(jboolean)enabled {
+- (void)setLiftableOverrideEnabledWithBoolean:(bool)enabled {
   self->liftableOverride_ = enabled;
 }
 
-- (jboolean)setLiftableStateWithBoolean:(jboolean)liftable {
+- (bool)setLiftableStateWithBoolean:(bool)liftable {
   return ASAppBarLayout_setLiftableStateWithBoolean_(self, liftable);
 }
 
-- (jboolean)isLifted {
+- (bool)isLifted {
   return lifted_;
 }
 
-- (jboolean)setLiftedStateWithBoolean:(jboolean)lifted {
+- (bool)setLiftedStateWithBoolean:(bool)lifted {
   return [self setLiftedStateWithBoolean:lifted withBoolean:!liftableOverride_];
 }
 
-- (jboolean)setLiftedStateWithBoolean:(jboolean)lifted
-                          withBoolean:(jboolean)force {
+- (bool)setLiftedStateWithBoolean:(bool)lifted
+                      withBoolean:(bool)force {
   if (force && self->lifted_ != lifted) {
     self->lifted_ = lifted;
     [self refreshDrawableState];
@@ -555,15 +566,15 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return false;
 }
 
-- (void)setLiftOnScrollWithBoolean:(jboolean)liftOnScroll {
+- (void)setLiftOnScrollWithBoolean:(bool)liftOnScroll {
   self->liftOnScroll_ = liftOnScroll;
 }
 
-- (jboolean)isLiftOnScroll {
+- (bool)isLiftOnScroll {
   return liftOnScroll_;
 }
 
-- (jboolean)shouldLiftWithADView:(ADView *)defaultScrollingView {
+- (bool)shouldLiftWithADView:(ADView *)defaultScrollingView {
   ADView *scrollingView = ASAppBarLayout_findLiftOnScrollTargetViewWithADView_(self, defaultScrollingView);
   if (scrollingView == nil) {
     scrollingView = defaultScrollingView;
@@ -575,7 +586,7 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   return ASAppBarLayout_findLiftOnScrollTargetViewWithADView_(self, defaultScrollingView);
 }
 
-- (jint)getPendingAction {
+- (int32_t)getPendingAction {
   return pendingAction_;
 }
 
@@ -583,11 +594,11 @@ __attribute__((unused)) static void ASAppBarLayout_ScrollingViewBehavior_updateL
   pendingAction_ = ASAppBarLayout_PENDING_ACTION_NONE;
 }
 
-- (jint)getTopInset {
+- (int32_t)getTopInset {
   return ASAppBarLayout_getTopInset(self);
 }
 
-- (jboolean)shouldOffsetFirstChild {
+- (bool)shouldOffsetFirstChild {
   return ASAppBarLayout_shouldOffsetFirstChild(self);
 }
 
@@ -602,12 +613,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASAppBarLayout_invalidateScrollRanges(self);
 }
 
-- (jboolean)isLiftOnScrollCompatibleBackground {
+- (bool)isLiftOnScrollCompatibleBackground {
   return ASAppBarLayout_isLiftOnScrollCompatibleBackground(self);
 }
 
-- (void)startLiftOnScrollColorAnimationWithFloat:(jfloat)fromValue
-                                       withFloat:(jfloat)toValue {
+- (void)startLiftOnScrollColorAnimationWithFloat:(float)fromValue
+                                       withFloat:(float)toValue {
   ASAppBarLayout_startLiftOnScrollColorAnimationWithFloat_withFloat_(self, fromValue, toValue);
 }
 
@@ -744,8 +755,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 @end
 
-jboolean ASAppBarLayout_hasCollapsibleChild(ASAppBarLayout *self) {
-  for (jint i = 0, z = [self getChildCount]; i < z; i++) {
+bool ASAppBarLayout_hasCollapsibleChild(ASAppBarLayout *self) {
+  for (int32_t i = 0, z = [self getChildCount]; i < z; i++) {
     if ([((ASAppBarLayout_LayoutParams *) nil_chk(((ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk([self getChildAtWithInt:i])) getLayoutParams], [ASAppBarLayout_LayoutParams class])))) isCollapsible]) {
       return true;
     }
@@ -753,24 +764,24 @@ jboolean ASAppBarLayout_hasCollapsibleChild(ASAppBarLayout *self) {
   return false;
 }
 
-void ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(ASAppBarLayout *self, jboolean expanded, jboolean animate, jboolean force) {
+void ASAppBarLayout_setExpandedWithBoolean_withBoolean_withBoolean_(ASAppBarLayout *self, bool expanded, bool animate, bool force) {
   self->pendingAction_ = (expanded ? ASAppBarLayout_PENDING_ACTION_EXPANDED : ASAppBarLayout_PENDING_ACTION_COLLAPSED) | (animate ? ASAppBarLayout_PENDING_ACTION_ANIMATE_ENABLED : 0) | (force ? ASAppBarLayout_PENDING_ACTION_FORCE : 0);
   [self requestLayout];
 }
 
-jint ASAppBarLayout_getTotalScrollRange(ASAppBarLayout *self) {
+int32_t ASAppBarLayout_getTotalScrollRange(ASAppBarLayout *self) {
   if (self->totalScrollRange_ != ASAppBarLayout_INVALID_SCROLL_RANGE) {
     return self->totalScrollRange_;
   }
-  jint range = 0;
-  for (jint i = 0, z = [self getChildCount]; i < z; i++) {
+  int32_t range = 0;
+  for (int32_t i = 0, z = [self getChildCount]; i < z; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
     }
     ASAppBarLayout_LayoutParams *lp = (ASAppBarLayout_LayoutParams *) cast_chk([child getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint childHeight = [child getMeasuredHeight];
-    jint flags = ((ASAppBarLayout_LayoutParams *) nil_chk(lp))->scrollFlags_;
+    int32_t childHeight = [child getMeasuredHeight];
+    int32_t flags = ((ASAppBarLayout_LayoutParams *) nil_chk(lp))->scrollFlags_;
     if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) != 0) {
       range += childHeight + lp->topMargin_ + lp->bottomMargin_;
       if (i == 0 && ADXViewCompat_getFitsSystemWindowsWithADView_(child)) {
@@ -788,7 +799,7 @@ jint ASAppBarLayout_getTotalScrollRange(ASAppBarLayout *self) {
   return self->totalScrollRange_ = JavaLangMath_maxWithInt_withInt_(0, range);
 }
 
-jboolean ASAppBarLayout_setLiftableStateWithBoolean_(ASAppBarLayout *self, jboolean liftable) {
+bool ASAppBarLayout_setLiftableStateWithBoolean_(ASAppBarLayout *self, bool liftable) {
   if (self->liftable_ != liftable) {
     self->liftable_ = liftable;
     [self refreshDrawableState];
@@ -813,11 +824,11 @@ ADView *ASAppBarLayout_findLiftOnScrollTargetViewWithADView_(ASAppBarLayout *sel
   return self->liftOnScrollTargetView_ != nil ? [self->liftOnScrollTargetView_ get] : nil;
 }
 
-jint ASAppBarLayout_getTopInset(ASAppBarLayout *self) {
+int32_t ASAppBarLayout_getTopInset(ASAppBarLayout *self) {
   return self->lastInsets_ != nil ? [self->lastInsets_ getSystemWindowInsetTop] : 0;
 }
 
-jboolean ASAppBarLayout_shouldOffsetFirstChild(ASAppBarLayout *self) {
+bool ASAppBarLayout_shouldOffsetFirstChild(ASAppBarLayout *self) {
   if ([self getChildCount] > 0) {
     ADView *firstChild = [self getChildAtWithInt:0];
     return [((ADView *) nil_chk(firstChild)) getVisibility] != ADView_GONE && !ADXViewCompat_getFitsSystemWindowsWithADView_(firstChild);
@@ -848,14 +859,16 @@ ASAppBarLayout *create_ASAppBarLayout_init() {
 void ASAppBarLayout_invalidateScrollRanges(ASAppBarLayout *self) {
 }
 
-jboolean ASAppBarLayout_isLiftOnScrollCompatibleBackground(ASAppBarLayout *self) {
+bool ASAppBarLayout_isLiftOnScrollCompatibleBackground(ASAppBarLayout *self) {
   return false;
 }
 
-void ASAppBarLayout_startLiftOnScrollColorAnimationWithFloat_withFloat_(ASAppBarLayout *self, jfloat fromValue, jfloat toValue) {
+void ASAppBarLayout_startLiftOnScrollColorAnimationWithFloat_withFloat_(ASAppBarLayout *self, float fromValue, float toValue) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayout)
+
+J2OBJC_NAME_MAPPING(ASAppBarLayout, "com.google.android.material.appbar", "AS")
 
 @implementation ASAppBarLayout_BaseOnOffsetChangedListener
 
@@ -919,15 +932,15 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASAppBarLayout_LiftOnScrollListener)
 
 @implementation ASAppBarLayout_LayoutParams
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height {
   ASAppBarLayout_LayoutParams_initWithInt_withInt_(self, width, height);
   return self;
 }
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height
-                  withFloat:(jfloat)weight {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height
+                  withFloat:(float)weight {
   ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(self, width, height, weight);
   return self;
 }
@@ -942,11 +955,11 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASAppBarLayout_LiftOnScrollListener)
   return self;
 }
 
-- (void)setScrollFlagsWithInt:(jint)flags {
+- (void)setScrollFlagsWithInt:(int32_t)flags {
   scrollFlags_ = flags;
 }
 
-- (jint)getScrollFlags {
+- (int32_t)getScrollFlags {
   return scrollFlags_;
 }
 
@@ -962,7 +975,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASAppBarLayout_LiftOnScrollListener)
   return scrollInterpolator_;
 }
 
-- (jboolean)isCollapsible {
+- (bool)isCollapsible {
   return (scrollFlags_ & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) == ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL && (scrollFlags_ & ASAppBarLayout_LayoutParams_COLLAPSIBLE_FLAGS) != 0;
 }
 
@@ -1017,29 +1030,29 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASAppBarLayout_LiftOnScrollListener)
 
 @end
 
-void ASAppBarLayout_LayoutParams_initWithInt_withInt_(ASAppBarLayout_LayoutParams *self, jint width, jint height) {
+void ASAppBarLayout_LayoutParams_initWithInt_withInt_(ASAppBarLayout_LayoutParams *self, int32_t width, int32_t height) {
   ADLinearLayout_LayoutParams_initWithInt_withInt_(self, width, height);
   self->scrollFlags_ = ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL;
 }
 
-ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ASAppBarLayout_LayoutParams, initWithInt_withInt_, width, height)
 }
 
-ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ASAppBarLayout_LayoutParams, initWithInt_withInt_, width, height)
 }
 
-void ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(ASAppBarLayout_LayoutParams *self, jint width, jint height, jfloat weight) {
+void ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(ASAppBarLayout_LayoutParams *self, int32_t width, int32_t height, float weight) {
   ADLinearLayout_LayoutParams_initWithInt_withInt_withFloat_(self, width, height, weight);
   self->scrollFlags_ = ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL;
 }
 
-ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(jint width, jint height, jfloat weight) {
+ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(int32_t width, int32_t height, float weight) {
   J2OBJC_NEW_IMPL(ASAppBarLayout_LayoutParams, initWithInt_withInt_withFloat_, width, height, weight)
 }
 
-ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(jint width, jint height, jfloat weight) {
+ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(int32_t width, int32_t height, float weight) {
   J2OBJC_CREATE_IMPL(ASAppBarLayout_LayoutParams, initWithInt_withInt_withFloat_, width, height, weight)
 }
 
@@ -1083,13 +1096,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)onStartNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                             withADView:(ASAppBarLayout *)child
-                                             withADView:(ADView *)directTargetChild
-                                             withADView:(ADView *)target
-                                                withInt:(jint)nestedScrollAxes
-                                                withInt:(jint)type {
-  jboolean started = (nestedScrollAxes & ADXViewCompat_SCROLL_AXIS_VERTICAL) != 0 && ([((ASAppBarLayout *) nil_chk(child)) isLiftOnScroll] || ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(self, parent, child, directTargetChild));
+- (bool)onStartNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                         withADView:(ASAppBarLayout *)child
+                                         withADView:(ADView *)directTargetChild
+                                         withADView:(ADView *)target
+                                            withInt:(int32_t)nestedScrollAxes
+                                            withInt:(int32_t)type {
+  bool started = (nestedScrollAxes & ADXViewCompat_SCROLL_AXIS_VERTICAL) != 0 && ([((ASAppBarLayout *) nil_chk(child)) isLiftOnScroll] || ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(self, parent, child, directTargetChild));
   if (started && offsetAnimator_ != nil) {
     [offsetAnimator_ cancel];
   }
@@ -1098,22 +1111,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   return started;
 }
 
-- (jboolean)canScrollChildrenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                   withASAppBarLayout:(ASAppBarLayout *)child
-                                           withADView:(ADView *)directTargetChild {
+- (bool)canScrollChildrenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                               withASAppBarLayout:(ASAppBarLayout *)child
+                                       withADView:(ADView *)directTargetChild {
   return ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(self, parent, child, directTargetChild);
 }
 
 - (void)onNestedPreScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                        withADView:(ASAppBarLayout *)child
                                        withADView:(ADView *)target
-                                          withInt:(jint)dx
-                                          withInt:(jint)dy
+                                          withInt:(int32_t)dx
+                                          withInt:(int32_t)dy
                                      withIntArray:(IOSIntArray *)consumed
-                                          withInt:(jint)type {
+                                          withInt:(int32_t)type {
   if (dy != 0) {
-    jint min;
-    jint max;
+    int32_t min;
+    int32_t max;
     if (dy < 0) {
       min = -ASAppBarLayout_getTotalScrollRange(nil_chk(child));
       max = min + [child getDownNestedPreScrollRange];
@@ -1134,11 +1147,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)onNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                     withADView:(ASAppBarLayout *)child
                                     withADView:(ADView *)target
-                                       withInt:(jint)dxConsumed
-                                       withInt:(jint)dyConsumed
-                                       withInt:(jint)dxUnconsumed
-                                       withInt:(jint)dyUnconsumed
-                                       withInt:(jint)type
+                                       withInt:(int32_t)dxConsumed
+                                       withInt:(int32_t)dyConsumed
+                                       withInt:(int32_t)dxUnconsumed
+                                       withInt:(int32_t)dyUnconsumed
+                                       withInt:(int32_t)type
                                   withIntArray:(IOSIntArray *)consumed {
   if (dyUnconsumed < 0) {
     *IOSIntArray_GetRef(nil_chk(consumed), 1) = [self scrollWithADXCoordinatorLayout:coordinatorLayout withADView:child withInt:dyUnconsumed withInt:-[((ASAppBarLayout *) nil_chk(child)) getDownNestedScrollRange] withInt:0];
@@ -1151,7 +1164,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)onStopNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                         withADView:(ASAppBarLayout *)abl
                                         withADView:(ADView *)target
-                                           withInt:(jint)type {
+                                           withInt:(int32_t)type {
   if (lastStartedType_ == ADXViewCompat_TYPE_TOUCH || type == ADXViewCompat_TYPE_NON_TOUCH) {
     ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_withASAppBarLayout_(self, coordinatorLayout, abl);
     if ([((ASAppBarLayout *) nil_chk(abl)) isLiftOnScroll]) {
@@ -1167,20 +1180,20 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)animateOffsetToWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                              withASAppBarLayout:(ASAppBarLayout *)child
-                                        withInt:(jint)offset
-                                      withFloat:(jfloat)velocity {
+                                        withInt:(int32_t)offset
+                                      withFloat:(float)velocity {
   ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(self, coordinatorLayout, child, offset, velocity);
 }
 
 - (void)animateOffsetWithDurationWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                        withASAppBarLayout:(ASAppBarLayout *)child
-                                                  withInt:(jint)offset
-                                                  withInt:(jint)duration {
+                                                  withInt:(int32_t)offset
+                                                  withInt:(int32_t)duration {
   ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(self, coordinatorLayout, child, offset, duration);
 }
 
-- (jint)getChildIndexOnOffsetWithASAppBarLayout:(ASAppBarLayout *)abl
-                                        withInt:(jint)offset {
+- (int32_t)getChildIndexOnOffsetWithASAppBarLayout:(ASAppBarLayout *)abl
+                                           withInt:(int32_t)offset {
   return ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(self, abl, offset);
 }
 
@@ -1189,23 +1202,23 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_withASAppBarLayout_(self, coordinatorLayout, abl);
 }
 
-- (jint)calculateSnapOffsetWithInt:(jint)value
-                           withInt:(jint)bottom
-                           withInt:(jint)top {
+- (int32_t)calculateSnapOffsetWithInt:(int32_t)value
+                              withInt:(int32_t)bottom
+                              withInt:(int32_t)top {
   return ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(self, value, bottom, top);
 }
 
-+ (jboolean)checkFlagWithInt:(jint)flags
-                     withInt:(jint)check {
++ (bool)checkFlagWithInt:(int32_t)flags
+                 withInt:(int32_t)check {
   return ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(flags, check);
 }
 
-- (jboolean)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                        withADView:(ASAppBarLayout *)child
-                                           withInt:(jint)parentWidthMeasureSpec
-                                           withInt:(jint)widthUsed
-                                           withInt:(jint)parentHeightMeasureSpec
-                                           withInt:(jint)heightUsed {
+- (bool)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                    withADView:(ASAppBarLayout *)child
+                                       withInt:(int32_t)parentWidthMeasureSpec
+                                       withInt:(int32_t)widthUsed
+                                       withInt:(int32_t)parentHeightMeasureSpec
+                                       withInt:(int32_t)heightUsed {
   ADXCoordinatorLayout_LayoutParams *lp = (ADXCoordinatorLayout_LayoutParams *) cast_chk([((ASAppBarLayout *) nil_chk(child)) getLayoutParams], [ADXCoordinatorLayout_LayoutParams class]);
   if (((ADXCoordinatorLayout_LayoutParams *) nil_chk(lp))->height_ == ADViewGroup_LayoutParams_WRAP_CONTENT) {
     [((ADXCoordinatorLayout *) nil_chk(parent)) onMeasureChildWithADView:child withInt:parentWidthMeasureSpec withInt:widthUsed withInt:ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(0, ADView_MeasureSpec_UNSPECIFIED) withInt:heightUsed];
@@ -1214,11 +1227,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [super onMeasureChildWithADXCoordinatorLayout:parent withADView:child withInt:parentWidthMeasureSpec withInt:widthUsed withInt:parentHeightMeasureSpec withInt:heightUsed];
 }
 
-- (jboolean)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                       withADView:(ASAppBarLayout *)abl
-                                          withInt:(jint)layoutDirection {
-  jboolean handled = [super onLayoutChildWithADXCoordinatorLayout:parent withADView:abl withInt:layoutDirection];
-  jint pendingAction = [((ASAppBarLayout *) nil_chk(abl)) getPendingAction];
+- (bool)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                   withADView:(ASAppBarLayout *)abl
+                                      withInt:(int32_t)layoutDirection {
+  bool handled = [super onLayoutChildWithADXCoordinatorLayout:parent withADView:abl withInt:layoutDirection];
+  int32_t pendingAction = [((ASAppBarLayout *) nil_chk(abl)) getPendingAction];
   if (savedState_ != nil && (pendingAction & ASAppBarLayout_PENDING_ACTION_FORCE) == 0) {
     if (savedState_->fullyScrolled_) {
       [self setHeaderTopBottomOffsetWithADXCoordinatorLayout:parent withADView:abl withInt:-ASAppBarLayout_getTotalScrollRange(abl)];
@@ -1228,7 +1241,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     else {
       ADView *child = [abl getChildAtWithInt:savedState_->firstVisibleChildIndex_];
-      jint offset = -[((ADView *) nil_chk(child)) getBottom];
+      int32_t offset = -[((ADView *) nil_chk(child)) getBottom];
       if (((ASAppBarLayout_SavedState *) nil_chk(savedState_))->firstVisibleChildAtMinimumHeight_) {
         offset += ADXViewCompat_getMinimumHeightWithADView_(child) + ASAppBarLayout_getTopInset(abl);
       }
@@ -1239,9 +1252,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   else if (pendingAction != ASAppBarLayout_PENDING_ACTION_NONE) {
-    jboolean animate = (pendingAction & ASAppBarLayout_PENDING_ACTION_ANIMATE_ENABLED) != 0;
+    bool animate = (pendingAction & ASAppBarLayout_PENDING_ACTION_ANIMATE_ENABLED) != 0;
     if ((pendingAction & ASAppBarLayout_PENDING_ACTION_COLLAPSED) != 0) {
-      jint offset = -[abl getUpNestedPreScrollRange];
+      int32_t offset = -[abl getUpNestedPreScrollRange];
       if (animate) {
         ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(self, parent, abl, offset, 0);
       }
@@ -1276,17 +1289,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ASAppBarLayout_BaseBehavior_getChildWithScrollingBehaviorWithADXCoordinatorLayout_(self, coordinatorLayout);
 }
 
-- (jboolean)childrenHaveScrollFlagsWithASAppBarLayout:(ASAppBarLayout *)appBarLayout {
+- (bool)childrenHaveScrollFlagsWithASAppBarLayout:(ASAppBarLayout *)appBarLayout {
   return ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(self, appBarLayout);
 }
 
-- (jboolean)addAccessibilityScrollActionsWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                                               withASAppBarLayout:(ASAppBarLayout *)appBarLayout
-                                                       withADView:(ADView *)scrollingView {
+- (bool)addAccessibilityScrollActionsWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                                           withASAppBarLayout:(ASAppBarLayout *)appBarLayout
+                                                   withADView:(ADView *)scrollingView {
   return ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordinatorLayout_withASAppBarLayout_withADView_(self, coordinatorLayout, appBarLayout, scrollingView);
 }
 
-- (jboolean)canDragViewWithADView:(ASAppBarLayout *)view {
+- (bool)canDragViewWithADView:(ASAppBarLayout *)view {
   if (onDragCallback_ != nil) {
     return [onDragCallback_ canDragWithASAppBarLayout:view];
   }
@@ -1307,30 +1320,30 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getMaxDragOffsetWithADView:(ASAppBarLayout *)view {
+- (int32_t)getMaxDragOffsetWithADView:(ASAppBarLayout *)view {
   return -[((ASAppBarLayout *) nil_chk(view)) getDownNestedScrollRange] + ASAppBarLayout_getTopInset(view);
 }
 
-- (jint)getScrollRangeForDragFlingWithADView:(ASAppBarLayout *)view {
+- (int32_t)getScrollRangeForDragFlingWithADView:(ASAppBarLayout *)view {
   return ASAppBarLayout_getTotalScrollRange(nil_chk(view));
 }
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                                              withADView:(ASAppBarLayout *)appBarLayout
-                                                 withInt:(jint)newOffset
-                                                 withInt:(jint)minOffset
-                                                 withInt:(jint)maxOffset {
-  jint curOffset = [self getTopBottomOffsetForScrollingSibling];
-  jint consumed = 0;
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                                                 withADView:(ASAppBarLayout *)appBarLayout
+                                                    withInt:(int32_t)newOffset
+                                                    withInt:(int32_t)minOffset
+                                                    withInt:(int32_t)maxOffset {
+  int32_t curOffset = [self getTopBottomOffsetForScrollingSibling];
+  int32_t consumed = 0;
   if (minOffset != 0 && curOffset >= minOffset && curOffset <= maxOffset) {
     newOffset = ADMathUtils_clampWithInt_withInt_withInt_(newOffset, minOffset, maxOffset);
     if (curOffset != newOffset) {
-      jint interpolatedOffset = [((ASAppBarLayout *) nil_chk(appBarLayout)) hasChildWithInterpolator] ? ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(self, appBarLayout, newOffset) : newOffset;
-      jboolean offsetChanged = [self setTopAndBottomOffsetWithInt:interpolatedOffset];
+      int32_t interpolatedOffset = [((ASAppBarLayout *) nil_chk(appBarLayout)) hasChildWithInterpolator] ? ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(self, appBarLayout, newOffset) : newOffset;
+      bool offsetChanged = [self setTopAndBottomOffsetWithInt:interpolatedOffset];
       consumed = curOffset - newOffset;
       offsetDelta_ = newOffset - interpolatedOffset;
       if (offsetChanged) {
-        for (jint i = 0; i < [appBarLayout getChildCount]; i++) {
+        for (int32_t i = 0; i < [appBarLayout getChildCount]; i++) {
           ASAppBarLayout_LayoutParams *params = (ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk([appBarLayout getChildAtWithInt:i])) getLayoutParams], [ASAppBarLayout_LayoutParams class]);
           ASAppBarLayout_ChildScrollEffect *scrollEffect = [((ASAppBarLayout_LayoutParams *) nil_chk(params)) getScrollEffect];
           if (scrollEffect != nil && ([params getScrollFlags] & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) != 0) {
@@ -1352,30 +1365,30 @@ J2OBJC_IGNORE_DESIGNATED_END
   return consumed;
 }
 
-- (jboolean)isOffsetAnimatorRunning {
+- (bool)isOffsetAnimatorRunning {
   return offsetAnimator_ != nil && [offsetAnimator_ isRunning];
 }
 
-- (jint)interpolateOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
-                                    withInt:(jint)offset {
+- (int32_t)interpolateOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
+                                       withInt:(int32_t)offset {
   return ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(self, layout, offset);
 }
 
 - (void)updateAppBarLayoutDrawableStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                              withASAppBarLayout:(ASAppBarLayout *)layout
-                                                        withInt:(jint)offset
-                                                        withInt:(jint)direction
-                                                    withBoolean:(jboolean)forceJump {
+                                                        withInt:(int32_t)offset
+                                                        withInt:(int32_t)direction
+                                                    withBoolean:(bool)forceJump {
   ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_withBoolean_(self, parent, layout, offset, direction, forceJump);
 }
 
-- (jboolean)shouldJumpElevationStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                          withASAppBarLayout:(ASAppBarLayout *)layout {
+- (bool)shouldJumpElevationStateWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                      withASAppBarLayout:(ASAppBarLayout *)layout {
   return ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(self, parent, layout);
 }
 
 + (ADView *)getAppBarChildOnOffsetWithASAppBarLayout:(ASAppBarLayout *)layout
-                                             withInt:(jint)offset {
+                                             withInt:(int32_t)offset {
   return ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(layout, offset);
 }
 
@@ -1383,12 +1396,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ASAppBarLayout_BaseBehavior_findFirstScrollingChildWithADXCoordinatorLayout_(self, parent);
 }
 
-- (jint)getTopBottomOffsetForScrollingSibling {
+- (int32_t)getTopBottomOffsetForScrollingSibling {
   return [self getTopAndBottomOffset] + offsetDelta_;
 }
 
 - (void)restoreScrollStateWithASAppBarLayout_SavedState:(ASAppBarLayout_SavedState *)state
-                                            withBoolean:(jboolean)force {
+                                            withBoolean:(bool)force {
   if (savedState_ == nil || force) {
     savedState_ = state;
   }
@@ -1494,26 +1507,26 @@ ASAppBarLayout_BaseBehavior *create_ASAppBarLayout_BaseBehavior_init() {
   J2OBJC_CREATE_IMPL(ASAppBarLayout_BaseBehavior, init)
 }
 
-jboolean ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *child, ADView *directTargetChild) {
+bool ASAppBarLayout_BaseBehavior_canScrollChildrenWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *child, ADView *directTargetChild) {
   return [((ASAppBarLayout *) nil_chk(child)) hasScrollableChildren] && [((ADXCoordinatorLayout *) nil_chk(parent)) getHeight] - [((ADView *) nil_chk(directTargetChild)) getHeight] <= [child getHeight];
 }
 
-void ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, jint offset, jfloat velocity) {
-  jint distance = JavaLangMath_absWithInt_([self getTopBottomOffsetForScrollingSibling] - offset);
-  jint duration;
+void ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, int32_t offset, float velocity) {
+  int32_t distance = JavaLangMath_absWithInt_([self getTopBottomOffsetForScrollingSibling] - offset);
+  int32_t duration;
   velocity = JavaLangMath_absWithFloat_(velocity);
   if (velocity > 0) {
     duration = 3 * JavaLangMath_roundWithFloat_(1000 * (distance / velocity));
   }
   else {
-    jfloat distanceRatio = (jfloat) distance / [((ASAppBarLayout *) nil_chk(child)) getHeight];
+    float distanceRatio = (float) distance / [((ASAppBarLayout *) nil_chk(child)) getHeight];
     duration = JreFpToInt(((distanceRatio + 1) * 150));
   }
   ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(self, coordinatorLayout, child, offset, duration);
 }
 
-void ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, jint offset, jint duration) {
-  jint currentOffset = [self getTopBottomOffsetForScrollingSibling];
+void ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *child, int32_t offset, int32_t duration) {
+  int32_t currentOffset = [self getTopBottomOffsetForScrollingSibling];
   if (currentOffset == offset) {
     if (self->offsetAnimator_ != nil && [self->offsetAnimator_ isRunning]) {
       [self->offsetAnimator_ cancel];
@@ -1529,15 +1542,15 @@ void ASAppBarLayout_BaseBehavior_animateOffsetWithDurationWithADXCoordinatorLayo
     [self->offsetAnimator_ cancel];
   }
   (void) [((ADValueAnimator *) nil_chk(self->offsetAnimator_)) setDurationWithLong:JavaLangMath_minWithInt_withInt_(duration, ASAppBarLayout_BaseBehavior_MAX_OFFSET_ANIMATION_DURATION)];
-  [((ADValueAnimator *) nil_chk(self->offsetAnimator_)) setIntValuesWithIntArray:[IOSIntArray newArrayWithInts:(jint[]){ currentOffset, offset } count:2]];
+  [((ADValueAnimator *) nil_chk(self->offsetAnimator_)) setIntValuesWithIntArray:[IOSIntArray newArrayWithInts:(int32_t[]){ currentOffset, offset } count:2]];
   [((ADValueAnimator *) nil_chk(self->offsetAnimator_)) start];
 }
 
-jint ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *abl, jint offset) {
-  for (jint i = 0, count = [((ASAppBarLayout *) nil_chk(abl)) getChildCount]; i < count; i++) {
+int32_t ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *abl, int32_t offset) {
+  for (int32_t i = 0, count = [((ASAppBarLayout *) nil_chk(abl)) getChildCount]; i < count; i++) {
     ADView *child = [abl getChildAtWithInt:i];
-    jint top = [((ADView *) nil_chk(child)) getTop];
-    jint bottom = [child getBottom];
+    int32_t top = [((ADView *) nil_chk(child)) getTop];
+    int32_t bottom = [child getBottom];
     ASAppBarLayout_LayoutParams *lp = (ASAppBarLayout_LayoutParams *) cast_chk([child getLayoutParams], [ASAppBarLayout_LayoutParams class]);
     if (ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_([((ASAppBarLayout_LayoutParams *) nil_chk(lp)) getScrollFlags], ASAppBarLayout_LayoutParams_SCROLL_FLAG_SNAP_MARGINS)) {
       top -= lp->topMargin_;
@@ -1551,16 +1564,16 @@ jint ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt
 }
 
 void ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *abl) {
-  jint topInset = ASAppBarLayout_getTopInset(nil_chk(abl)) + [abl getPaddingTop];
-  jint offset = [self getTopBottomOffsetForScrollingSibling] - topInset;
-  jint offsetChildIndex = ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(self, abl, offset);
+  int32_t topInset = ASAppBarLayout_getTopInset(nil_chk(abl)) + [abl getPaddingTop];
+  int32_t offset = [self getTopBottomOffsetForScrollingSibling] - topInset;
+  int32_t offsetChildIndex = ASAppBarLayout_BaseBehavior_getChildIndexOnOffsetWithASAppBarLayout_withInt_(self, abl, offset);
   if (offsetChildIndex >= 0) {
     ADView *offsetChild = [abl getChildAtWithInt:offsetChildIndex];
     ASAppBarLayout_LayoutParams *lp = (ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(offsetChild)) getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint flags = [((ASAppBarLayout_LayoutParams *) nil_chk(lp)) getScrollFlags];
+    int32_t flags = [((ASAppBarLayout_LayoutParams *) nil_chk(lp)) getScrollFlags];
     if ((flags & ASAppBarLayout_LayoutParams_FLAG_SNAP) == ASAppBarLayout_LayoutParams_FLAG_SNAP) {
-      jint snapTop = -[offsetChild getTop];
-      jint snapBottom = -[offsetChild getBottom];
+      int32_t snapTop = -[offsetChild getTop];
+      int32_t snapBottom = -[offsetChild getBottom];
       if (offsetChildIndex == 0 && ADXViewCompat_getFitsSystemWindowsWithADView_(abl) && ADXViewCompat_getFitsSystemWindowsWithADView_(offsetChild)) {
         snapTop -= ASAppBarLayout_getTopInset(abl);
       }
@@ -1568,7 +1581,7 @@ void ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_wit
         snapBottom += ADXViewCompat_getMinimumHeightWithADView_(offsetChild);
       }
       else if (ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(flags, ASAppBarLayout_LayoutParams_FLAG_QUICK_RETURN | ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS)) {
-        jint seam = snapBottom + ADXViewCompat_getMinimumHeightWithADView_(offsetChild);
+        int32_t seam = snapBottom + ADXViewCompat_getMinimumHeightWithADView_(offsetChild);
         if (offset < seam) {
           snapTop = seam;
         }
@@ -1580,17 +1593,17 @@ void ASAppBarLayout_BaseBehavior_snapToChildIfNeededWithADXCoordinatorLayout_wit
         snapTop += lp->topMargin_;
         snapBottom -= lp->bottomMargin_;
       }
-      jint newOffset = ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(self, offset, snapBottom, snapTop) + topInset;
+      int32_t newOffset = ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(self, offset, snapBottom, snapTop) + topInset;
       ASAppBarLayout_BaseBehavior_animateOffsetToWithADXCoordinatorLayout_withASAppBarLayout_withInt_withFloat_(self, coordinatorLayout, abl, ADMathUtils_clampWithInt_withInt_withInt_(newOffset, -ASAppBarLayout_getTotalScrollRange(abl), 0), 0);
     }
   }
 }
 
-jint ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, jint value, jint bottom, jint top) {
+int32_t ASAppBarLayout_BaseBehavior_calculateSnapOffsetWithInt_withInt_withInt_(ASAppBarLayout_BaseBehavior *self, int32_t value, int32_t bottom, int32_t top) {
   return value < JreIntDiv((bottom + top), 2) ? bottom : top;
 }
 
-jboolean ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(jint flags, jint check) {
+bool ASAppBarLayout_BaseBehavior_checkFlagWithInt_withInt_(int32_t flags, int32_t check) {
   ASAppBarLayout_BaseBehavior_initialize();
   return (flags & check) == check;
 }
@@ -1609,8 +1622,8 @@ void ASAppBarLayout_BaseBehavior_updateAccessibilityActionsWithADXCoordinatorLay
 }
 
 ADView *ASAppBarLayout_BaseBehavior_getChildWithScrollingBehaviorWithADXCoordinatorLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout) {
-  jint childCount = [((ADXCoordinatorLayout *) nil_chk(coordinatorLayout)) getChildCount];
-  for (jint i = 0; i < childCount; i++) {
+  int32_t childCount = [((ADXCoordinatorLayout *) nil_chk(coordinatorLayout)) getChildCount];
+  for (int32_t i = 0; i < childCount; i++) {
     ADView *child = [coordinatorLayout getChildAtWithInt:i];
     ADXCoordinatorLayout_LayoutParams *lp = (ADXCoordinatorLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(child)) getLayoutParams], [ADXCoordinatorLayout_LayoutParams class]);
     if ([[((ADXCoordinatorLayout_LayoutParams *) nil_chk(lp)) getBehavior] isKindOfClass:[ASAppBarLayout_ScrollingViewBehavior class]]) {
@@ -1620,12 +1633,12 @@ ADView *ASAppBarLayout_BaseBehavior_getChildWithScrollingBehaviorWithADXCoordina
   return nil;
 }
 
-jboolean ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *appBarLayout) {
-  jint childCount = [((ASAppBarLayout *) nil_chk(appBarLayout)) getChildCount];
-  for (jint i = 0; i < childCount; i++) {
+bool ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *appBarLayout) {
+  int32_t childCount = [((ASAppBarLayout *) nil_chk(appBarLayout)) getChildCount];
+  for (int32_t i = 0; i < childCount; i++) {
     ADView *child = [appBarLayout getChildAtWithInt:i];
     ASAppBarLayout_LayoutParams *childLp = (ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(child)) getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint flags = ((ASAppBarLayout_LayoutParams *) nil_chk(childLp))->scrollFlags_;
+    int32_t flags = ((ASAppBarLayout_LayoutParams *) nil_chk(childLp))->scrollFlags_;
     if (flags != ASAppBarLayout_LayoutParams_SCROLL_FLAG_NO_SCROLL) {
       return true;
     }
@@ -1633,14 +1646,14 @@ jboolean ASAppBarLayout_BaseBehavior_childrenHaveScrollFlagsWithASAppBarLayout_(
   return false;
 }
 
-jboolean ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *appBarLayout, ADView *scrollingView) {
-  jboolean a11yScrollable = false;
+bool ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordinatorLayout_withASAppBarLayout_withADView_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *coordinatorLayout, ASAppBarLayout *appBarLayout, ADView *scrollingView) {
+  bool a11yScrollable = false;
   if ([self getTopBottomOffsetForScrollingSibling] != -ASAppBarLayout_getTotalScrollRange(nil_chk(appBarLayout))) {
     a11yScrollable = true;
   }
   if ([self getTopBottomOffsetForScrollingSibling] != 0) {
     if ([((ADView *) nil_chk(scrollingView)) canScrollVerticallyWithInt:-1]) {
-      jint dy = -[appBarLayout getDownNestedPreScrollRange];
+      int32_t dy = -[appBarLayout getDownNestedPreScrollRange];
       if (dy != 0) {
         a11yScrollable = true;
       }
@@ -1652,16 +1665,16 @@ jboolean ASAppBarLayout_BaseBehavior_addAccessibilityScrollActionsWithADXCoordin
   return a11yScrollable;
 }
 
-jint ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *layout, jint offset) {
-  jint absOffset = JavaLangMath_absWithInt_(offset);
-  for (jint i = 0, z = [((ASAppBarLayout *) nil_chk(layout)) getChildCount]; i < z; i++) {
+int32_t ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(ASAppBarLayout_BaseBehavior *self, ASAppBarLayout *layout, int32_t offset) {
+  int32_t absOffset = JavaLangMath_absWithInt_(offset);
+  for (int32_t i = 0, z = [((ASAppBarLayout *) nil_chk(layout)) getChildCount]; i < z; i++) {
     ADView *child = [layout getChildAtWithInt:i];
     ASAppBarLayout_LayoutParams *childLp = (ASAppBarLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(child)) getLayoutParams], [ASAppBarLayout_LayoutParams class]);
     id<ADInterpolator> interpolator = [((ASAppBarLayout_LayoutParams *) nil_chk(childLp)) getScrollInterpolator];
     if (absOffset >= [child getTop] && absOffset <= [child getBottom]) {
       if (interpolator != nil) {
-        jint childScrollableHeight = 0;
-        jint flags = [childLp getScrollFlags];
+        int32_t childScrollableHeight = 0;
+        int32_t flags = [childLp getScrollFlags];
         if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) != 0) {
           childScrollableHeight += [child getHeight] + childLp->topMargin_ + childLp->bottomMargin_;
           if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_EXIT_UNTIL_COLLAPSED) != 0) {
@@ -1672,8 +1685,8 @@ jint ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(AS
           childScrollableHeight -= ASAppBarLayout_getTopInset(layout);
         }
         if (childScrollableHeight > 0) {
-          jint offsetForView = absOffset - [child getTop];
-          jint interpolatedDiff = JavaLangMath_roundWithFloat_(childScrollableHeight * [interpolator getInterpolationWithFloat:offsetForView / (jfloat) childScrollableHeight]);
+          int32_t offsetForView = absOffset - [child getTop];
+          int32_t interpolatedDiff = JavaLangMath_roundWithFloat_(childScrollableHeight * [interpolator getInterpolationWithFloat:offsetForView / (float) childScrollableHeight]);
           return JavaLangInteger_signumWithInt_(offset) * ([child getTop] + interpolatedDiff);
         }
       }
@@ -1683,14 +1696,14 @@ jint ASAppBarLayout_BaseBehavior_interpolateOffsetWithASAppBarLayout_withInt_(AS
   return offset;
 }
 
-void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_withBoolean_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout, jint offset, jint direction, jboolean forceJump) {
+void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinatorLayout_withASAppBarLayout_withInt_withInt_withBoolean_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout, int32_t offset, int32_t direction, bool forceJump) {
   ADView *child = ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(layout, offset);
-  jboolean lifted = false;
+  bool lifted = false;
   if (child != nil) {
     ASAppBarLayout_LayoutParams *childLp = (ASAppBarLayout_LayoutParams *) cast_chk([child getLayoutParams], [ASAppBarLayout_LayoutParams class]);
-    jint flags = [((ASAppBarLayout_LayoutParams *) nil_chk(childLp)) getScrollFlags];
+    int32_t flags = [((ASAppBarLayout_LayoutParams *) nil_chk(childLp)) getScrollFlags];
     if ((flags & ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL) != 0) {
-      jint minHeight = ADXViewCompat_getMinimumHeightWithADView_(child);
+      int32_t minHeight = ADXViewCompat_getMinimumHeightWithADView_(child);
       if (direction > 0 && (flags & (ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS | ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED)) != 0) {
         lifted = (-offset >= [child getBottom] - minHeight - ASAppBarLayout_getTopInset(nil_chk(layout)));
       }
@@ -1702,7 +1715,7 @@ void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinat
   if ([((ASAppBarLayout *) nil_chk(layout)) isLiftOnScroll]) {
     lifted = [layout shouldLiftWithADView:ASAppBarLayout_BaseBehavior_findFirstScrollingChildWithADXCoordinatorLayout_(self, parent)];
   }
-  jboolean changed = [layout setLiftedStateWithBoolean:lifted];
+  bool changed = [layout setLiftedStateWithBoolean:lifted];
   if (forceJump || (changed && ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(self, parent, layout))) {
     if ([layout getBackground] != nil) {
       [((ADDrawable *) nil_chk([layout getBackground])) jumpToCurrentState];
@@ -1716,9 +1729,9 @@ void ASAppBarLayout_BaseBehavior_updateAppBarLayoutDrawableStateWithADXCoordinat
   }
 }
 
-jboolean ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout) {
+bool ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorLayout_withASAppBarLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent, ASAppBarLayout *layout) {
   id<JavaUtilList> dependencies = new_JavaUtilArrayList_init();
-  for (jint i = 0, size = [dependencies size]; i < size; i++) {
+  for (int32_t i = 0, size = [dependencies size]; i < size; i++) {
     ADView *dependency = [dependencies getWithInt:i];
     ADXCoordinatorLayout_LayoutParams *lp = (ADXCoordinatorLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(dependency)) getLayoutParams], [ADXCoordinatorLayout_LayoutParams class]);
     ADXCoordinatorLayout_Behavior *behavior = [((ADXCoordinatorLayout_LayoutParams *) nil_chk(lp)) getBehavior];
@@ -1729,10 +1742,10 @@ jboolean ASAppBarLayout_BaseBehavior_shouldJumpElevationStateWithADXCoordinatorL
   return false;
 }
 
-ADView *ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout *layout, jint offset) {
+ADView *ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_withInt_(ASAppBarLayout *layout, int32_t offset) {
   ASAppBarLayout_BaseBehavior_initialize();
-  jint absOffset = JavaLangMath_absWithInt_(offset);
-  for (jint i = 0, z = [((ASAppBarLayout *) nil_chk(layout)) getChildCount]; i < z; i++) {
+  int32_t absOffset = JavaLangMath_absWithInt_(offset);
+  for (int32_t i = 0, z = [((ASAppBarLayout *) nil_chk(layout)) getChildCount]; i < z; i++) {
     ADView *child = [layout getChildAtWithInt:i];
     if (absOffset >= [((ADView *) nil_chk(child)) getTop] && absOffset <= [child getBottom]) {
       return child;
@@ -1742,7 +1755,7 @@ ADView *ASAppBarLayout_BaseBehavior_getAppBarChildOnOffsetWithASAppBarLayout_wit
 }
 
 ADView *ASAppBarLayout_BaseBehavior_findFirstScrollingChildWithADXCoordinatorLayout_(ASAppBarLayout_BaseBehavior *self, ADXCoordinatorLayout *parent) {
-  for (jint i = 0, z = [((ADXCoordinatorLayout *) nil_chk(parent)) getChildCount]; i < z; i++) {
+  for (int32_t i = 0, z = [((ADXCoordinatorLayout *) nil_chk(parent)) getChildCount]; i < z; i++) {
     ADView *child = [parent getChildAtWithInt:i];
     if ([ADXNestedScrollingChild_class_() isInstance:child] || [child isKindOfClass:[ADAbsListView class]] || [child isKindOfClass:[ADScrollView class]]) {
       return child;
@@ -1801,7 +1814,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)canDragWithASAppBarLayout:(ASAppBarLayout *)appBarLayout {
+- (bool)canDragWithASAppBarLayout:(ASAppBarLayout *)appBarLayout {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -1862,7 +1875,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayout_BaseBehavior_BaseDragCallback)
     { "val$child_", "LASAppBarLayout;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
   };
   static const void *ptrTable[] = { "LASAppBarLayout_BaseBehavior;LADXCoordinatorLayout;LASAppBarLayout;", "onAnimationUpdate", "LADValueAnimator;", "Lcom/google/android/material/appbar/AppBarLayout$BaseBehavior<TT;>;", "TT;", "LASAppBarLayout_BaseBehavior;", "animateOffsetWithDurationWithADXCoordinatorLayout:withASAppBarLayout:withInt:withInt:" };
-  static const J2ObjcClassInfo _ASAppBarLayout_BaseBehavior_1 = { "", "com.google.android.material.appbar", ptrTable, methods, fields, 7, 0x8010, 2, 3, 5, -1, 6, -1, -1 };
+  static const J2ObjcClassInfo _ASAppBarLayout_BaseBehavior_1 = { "", "com.google.android.material.appbar", ptrTable, methods, fields, 7, 0x8000, 2, 3, 5, -1, 6, -1, -1 };
   return &_ASAppBarLayout_BaseBehavior_1;
 }
 
@@ -1892,15 +1905,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)layoutDependsOnWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                         withADView:(ADView *)child
-                                         withADView:(ADView *)dependency {
+- (bool)layoutDependsOnWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                     withADView:(ADView *)child
+                                     withADView:(ADView *)dependency {
   return [dependency isKindOfClass:[ASAppBarLayout class]];
 }
 
-- (jboolean)onDependentViewChangedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                                withADView:(ADView *)child
-                                                withADView:(ADView *)dependency {
+- (bool)onDependentViewChangedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                            withADView:(ADView *)child
+                                            withADView:(ADView *)dependency {
   ASAppBarLayout_ScrollingViewBehavior_offsetChildAsNeededWithADView_withADView_(self, child, dependency);
   ASAppBarLayout_ScrollingViewBehavior_updateLiftedStateIfNeededWithADView_withADView_(self, child, dependency);
   return false;
@@ -1913,10 +1926,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)onRequestChildRectangleOnScreenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                                         withADView:(ADView *)child
-                                                         withADRect:(ADRect *)rectangle
-                                                        withBoolean:(jboolean)immediate {
+- (bool)onRequestChildRectangleOnScreenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                     withADView:(ADView *)child
+                                                     withADRect:(ADRect *)rectangle
+                                                    withBoolean:(bool)immediate {
   ASAppBarLayout *header = [self findFirstDependencyWithJavaUtilList:[((ADXCoordinatorLayout *) nil_chk(parent)) getDependenciesWithADView:child]];
   if (header != nil) {
     ADRect *offsetRect = new_ADRect_initWithADRect_(rectangle);
@@ -1936,31 +1949,31 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASAppBarLayout_ScrollingViewBehavior_offsetChildAsNeededWithADView_withADView_(self, child, dependency);
 }
 
-- (jfloat)getOverlapRatioForOffsetWithADView:(ADView *)header {
+- (float)getOverlapRatioForOffsetWithADView:(ADView *)header {
   if ([header isKindOfClass:[ASAppBarLayout class]]) {
     ASAppBarLayout *abl = (ASAppBarLayout *) header;
-    jint totalScrollRange = ASAppBarLayout_getTotalScrollRange(nil_chk(abl));
-    jint preScrollDown = [abl getDownNestedPreScrollRange];
-    jint offset = ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(abl);
+    int32_t totalScrollRange = ASAppBarLayout_getTotalScrollRange(nil_chk(abl));
+    int32_t preScrollDown = [abl getDownNestedPreScrollRange];
+    int32_t offset = ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(abl);
     if (preScrollDown != 0 && (totalScrollRange + offset) <= preScrollDown) {
       return 0;
     }
     else {
-      jint availScrollRange = totalScrollRange - preScrollDown;
+      int32_t availScrollRange = totalScrollRange - preScrollDown;
       if (availScrollRange != 0) {
-        return 1.0f + (offset / (jfloat) availScrollRange);
+        return 1.0f + (offset / (float) availScrollRange);
       }
     }
   }
   return 0.0f;
 }
 
-+ (jint)getAppBarLayoutOffsetWithASAppBarLayout:(ASAppBarLayout *)abl {
++ (int32_t)getAppBarLayoutOffsetWithASAppBarLayout:(ASAppBarLayout *)abl {
   return ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(abl);
 }
 
 - (ASAppBarLayout *)findFirstDependencyWithJavaUtilList:(id<JavaUtilList>)views {
-  for (jint i = 0, z = [((id<JavaUtilList>) nil_chk(views)) size]; i < z; i++) {
+  for (int32_t i = 0, z = [((id<JavaUtilList>) nil_chk(views)) size]; i < z; i++) {
     ADView *view = [views getWithInt:i];
     if ([view isKindOfClass:[ASAppBarLayout class]]) {
       return (ASAppBarLayout *) view;
@@ -1969,7 +1982,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return nil;
 }
 
-- (jint)getScrollRangeWithADView:(ADView *)v {
+- (int32_t)getScrollRangeWithADView:(ADView *)v {
   if ([v isKindOfClass:[ASAppBarLayout class]]) {
     return ASAppBarLayout_getTotalScrollRange(nil_chk(((ASAppBarLayout *) v)));
   }
@@ -2039,7 +2052,7 @@ void ASAppBarLayout_ScrollingViewBehavior_offsetChildAsNeededWithADView_withADVi
   }
 }
 
-jint ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(ASAppBarLayout *abl) {
+int32_t ASAppBarLayout_ScrollingViewBehavior_getAppBarLayoutOffsetWithASAppBarLayout_(ASAppBarLayout *abl) {
   ASAppBarLayout_ScrollingViewBehavior_initialize();
   ADXCoordinatorLayout_Behavior *behavior = [((ADXCoordinatorLayout_LayoutParams *) nil_chk(((ADXCoordinatorLayout_LayoutParams *) cast_chk([((ASAppBarLayout *) nil_chk(abl)) getLayoutParams], [ADXCoordinatorLayout_LayoutParams class])))) getBehavior];
   if ([behavior isKindOfClass:[ASAppBarLayout_BaseBehavior class]]) {
@@ -2070,7 +2083,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)onOffsetChangedWithASAppBarLayout:(ASAppBarLayout *)appBarLayout
                                withADView:(ADView *)child
-                                withFloat:(jfloat)offset {
+                                withFloat:(float)offset {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }

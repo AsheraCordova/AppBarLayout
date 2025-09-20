@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\HeaderScrollingViewBehavior.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HeaderScrollingViewBehavior")
@@ -31,6 +32,9 @@
 @class ADRect;
 @class ADView;
 @class ADXCoordinatorLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @protocol JavaUtilList;
 
 /*!
@@ -54,44 +58,44 @@
  @brief Returns the distance that this view should overlap any <code>com.google.android.material.appbar.AppBarLayout</code>
  .
  */
-- (jint)getOverlayTop;
+- (int32_t)getOverlayTop;
 
-- (jboolean)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                        withADView:(ADView *)child
-                                           withInt:(jint)parentWidthMeasureSpec
-                                           withInt:(jint)widthUsed
-                                           withInt:(jint)parentHeightMeasureSpec
-                                           withInt:(jint)heightUsed;
+- (bool)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                    withADView:(ADView *)child
+                                       withInt:(int32_t)parentWidthMeasureSpec
+                                       withInt:(int32_t)widthUsed
+                                       withInt:(int32_t)parentHeightMeasureSpec
+                                       withInt:(int32_t)heightUsed;
 
 /*!
  @brief Set the distance that this view should overlap any <code>com.google.android.material.appbar.AppBarLayout</code>
  .
  @param overlayTop the distance in px
  */
-- (void)setOverlayTopWithInt:(jint)overlayTop;
+- (void)setOverlayTopWithInt:(int32_t)overlayTop;
 
 #pragma mark Protected
 
 - (void)layoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                  withADView:(ADView *)child
-                                    withInt:(jint)layoutDirection;
+                                    withInt:(int32_t)layoutDirection;
 
-- (jboolean)shouldHeaderOverlapScrollingChild;
+- (bool)shouldHeaderOverlapScrollingChild;
 
 #pragma mark Package-Private
 
 - (ADView *)findFirstDependencyWithJavaUtilList:(id<JavaUtilList>)views;
 
-- (jint)getOverlapPixelsForOffsetWithADView:(ADView *)header;
+- (int32_t)getOverlapPixelsForOffsetWithADView:(ADView *)header;
 
-- (jfloat)getOverlapRatioForOffsetWithADView:(ADView *)header;
+- (float)getOverlapRatioForOffsetWithADView:(ADView *)header;
 
-- (jint)getScrollRangeWithADView:(ADView *)v;
+- (int32_t)getScrollRangeWithADView:(ADView *)v;
 
 /*!
  @brief The gap between the top of the scrolling view and the bottom of the header layout in pixels.
  */
-- (jint)getVerticalLayoutGap;
+- (int32_t)getVerticalLayoutGap;
 
 @end
 
@@ -107,6 +111,7 @@ FOUNDATION_EXPORT void ASHeaderScrollingViewBehavior_initPackagePrivateWithADCon
 J2OBJC_TYPE_LITERAL_HEADER(ASHeaderScrollingViewBehavior)
 
 @compatibility_alias ComGoogleAndroidMaterialAppbarHeaderScrollingViewBehavior ASHeaderScrollingViewBehavior;
+
 
 #endif
 

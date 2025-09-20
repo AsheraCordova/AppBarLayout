@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\HeaderBehavior.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HeaderBehavior")
@@ -28,6 +29,8 @@
 
 @class ADView;
 @class ADXCoordinatorLayout;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief The <code>Behavior</code> for a view that sits vertically above scrolling a view.See <code>HeaderScrollingViewBehavior</code>
@@ -44,35 +47,35 @@
 /*!
  @brief Return true if the view can be dragged.
  */
-- (jboolean)canDragViewWithADView:(ADView *)view;
+- (bool)canDragViewWithADView:(ADView *)view;
 
 /*!
  @brief Returns the maximum px offset when <code>view</code> is being dragged.
  */
-- (jint)getMaxDragOffsetWithADView:(ADView *)view;
+- (int32_t)getMaxDragOffsetWithADView:(ADView *)view;
 
-- (jint)getScrollRangeForDragFlingWithADView:(ADView *)view;
+- (int32_t)getScrollRangeForDragFlingWithADView:(ADView *)view;
 
-- (jint)getTopBottomOffsetForScrollingSibling;
+- (int32_t)getTopBottomOffsetForScrollingSibling;
 
 - (void)onFlingFinishedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                      withADView:(ADView *)layout;
 
-- (jint)scrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                            withADView:(ADView *)header
-                               withInt:(jint)dy
-                               withInt:(jint)minOffset
-                               withInt:(jint)maxOffset;
+- (int32_t)scrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                               withADView:(ADView *)header
+                                  withInt:(int32_t)dy
+                                  withInt:(int32_t)minOffset
+                                  withInt:(int32_t)maxOffset;
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                              withADView:(ADView *)header
-                                                 withInt:(jint)newOffset;
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                 withADView:(ADView *)header
+                                                    withInt:(int32_t)newOffset;
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                              withADView:(ADView *)header
-                                                 withInt:(jint)newOffset
-                                                 withInt:(jint)minOffset
-                                                 withInt:(jint)maxOffset;
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                 withADView:(ADView *)header
+                                                    withInt:(int32_t)newOffset
+                                                    withInt:(int32_t)minOffset
+                                                    withInt:(int32_t)maxOffset;
 
 @end
 
@@ -83,6 +86,7 @@ FOUNDATION_EXPORT void ASHeaderBehavior_initPackagePrivate(ASHeaderBehavior *sel
 J2OBJC_TYPE_LITERAL_HEADER(ASHeaderBehavior)
 
 @compatibility_alias ComGoogleAndroidMaterialAppbarHeaderBehavior ASHeaderBehavior;
+
 
 #endif
 

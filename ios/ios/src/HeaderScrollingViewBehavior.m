@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\HeaderScrollingViewBehavior.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "Context.h"
 #include "CoordinatorLayout.h"
@@ -17,22 +22,31 @@
 #include "ViewGroup.h"
 #include "ViewOffsetBehavior.h"
 #include "WindowInsetsCompat.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASHeaderScrollingViewBehavior () {
  @public
-  jint verticalLayoutGap_;
-  jint overlayTop_;
+  int32_t verticalLayoutGap_;
+  int32_t overlayTop_;
 }
 
-+ (jint)resolveGravityWithInt:(jint)gravity;
++ (int32_t)resolveGravityWithInt:(int32_t)gravity;
 
 @end
 
-__attribute__((unused)) static jint ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(ASHeaderScrollingViewBehavior *self, ADView *header);
+__attribute__((unused)) static int32_t ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(ASHeaderScrollingViewBehavior *self, ADView *header);
 
-__attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravityWithInt_(jint gravity);
+__attribute__((unused)) static int32_t ASHeaderScrollingViewBehavior_resolveGravityWithInt_(int32_t gravity);
 
 @implementation ASHeaderScrollingViewBehavior
 
@@ -47,18 +61,18 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
   return self;
 }
 
-- (jboolean)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                        withADView:(ADView *)child
-                                           withInt:(jint)parentWidthMeasureSpec
-                                           withInt:(jint)widthUsed
-                                           withInt:(jint)parentHeightMeasureSpec
-                                           withInt:(jint)heightUsed {
-  jint childLpHeight = ((ADViewGroup_LayoutParams *) nil_chk([((ADView *) nil_chk(child)) getLayoutParams]))->height_;
+- (bool)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                    withADView:(ADView *)child
+                                       withInt:(int32_t)parentWidthMeasureSpec
+                                       withInt:(int32_t)widthUsed
+                                       withInt:(int32_t)parentHeightMeasureSpec
+                                       withInt:(int32_t)heightUsed {
+  int32_t childLpHeight = ((ADViewGroup_LayoutParams *) nil_chk([((ADView *) nil_chk(child)) getLayoutParams]))->height_;
   if (childLpHeight == ADViewGroup_LayoutParams_MATCH_PARENT || childLpHeight == ADViewGroup_LayoutParams_WRAP_CONTENT) {
     id<JavaUtilList> dependencies = [((ADXCoordinatorLayout *) nil_chk(parent)) getDependenciesWithADView:child];
     ADView *header = [self findFirstDependencyWithJavaUtilList:dependencies];
     if (header != nil) {
-      jint availableHeight = ADView_MeasureSpec_getSizeWithInt_(parentHeightMeasureSpec);
+      int32_t availableHeight = ADView_MeasureSpec_getSizeWithInt_(parentHeightMeasureSpec);
       if (availableHeight > 0) {
         if (ADXViewCompat_getFitsSystemWindowsWithADView_(header)) {
           ADXWindowInsetsCompat *parentInsets = nil;
@@ -70,8 +84,8 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
       else {
         availableHeight = [parent getHeight];
       }
-      jint height = availableHeight + [self getScrollRangeWithADView:header];
-      jint headerHeight = [header getMeasuredHeight];
+      int32_t height = availableHeight + [self getScrollRangeWithADView:header];
+      int32_t headerHeight = [header getMeasuredHeight];
       if ([self shouldHeaderOverlapScrollingChild]) {
         [child setTranslationYWithFloat:-headerHeight];
       }
@@ -79,7 +93,7 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
         [child setTranslationYWithFloat:0];
         height -= headerHeight;
       }
-      jint heightMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(height, childLpHeight == ADViewGroup_LayoutParams_MATCH_PARENT ? ADView_MeasureSpec_EXACTLY : ADView_MeasureSpec_AT_MOST);
+      int32_t heightMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(height, childLpHeight == ADViewGroup_LayoutParams_MATCH_PARENT ? ADView_MeasureSpec_EXACTLY : ADView_MeasureSpec_AT_MOST);
       [parent onMeasureChildWithADView:child withInt:parentWidthMeasureSpec withInt:widthUsed withInt:heightMeasureSpec withInt:heightUsed];
       return true;
     }
@@ -89,7 +103,7 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
 
 - (void)layoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                  withADView:(ADView *)child
-                                    withInt:(jint)layoutDirection {
+                                    withInt:(int32_t)layoutDirection {
   id<JavaUtilList> dependencies = [((ADXCoordinatorLayout *) nil_chk(parent)) getDependenciesWithADView:child];
   ADView *header = [self findFirstDependencyWithJavaUtilList:dependencies];
   if (header != nil) {
@@ -103,7 +117,7 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
     }
     ADRect *out = tempRect2_;
     ADXGravityCompat_applyWithInt_withInt_withInt_withADRect_withADRect_withInt_(ASHeaderScrollingViewBehavior_resolveGravityWithInt_(lp->gravity_), [child getMeasuredWidth], [child getMeasuredHeight], available, out, layoutDirection);
-    jint overlap = ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(self, header);
+    int32_t overlap = ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(self, header);
     [child layoutWithInt:((ADRect *) nil_chk(out))->left_ withInt:out->top_ - overlap withInt:out->right_ withInt:out->bottom_ - overlap];
     verticalLayoutGap_ = out->top_ - [header getBottom];
   }
@@ -113,19 +127,19 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
   }
 }
 
-- (jboolean)shouldHeaderOverlapScrollingChild {
+- (bool)shouldHeaderOverlapScrollingChild {
   return false;
 }
 
-- (jfloat)getOverlapRatioForOffsetWithADView:(ADView *)header {
+- (float)getOverlapRatioForOffsetWithADView:(ADView *)header {
   return 1.0f;
 }
 
-- (jint)getOverlapPixelsForOffsetWithADView:(ADView *)header {
+- (int32_t)getOverlapPixelsForOffsetWithADView:(ADView *)header {
   return ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(self, header);
 }
 
-+ (jint)resolveGravityWithInt:(jint)gravity {
++ (int32_t)resolveGravityWithInt:(int32_t)gravity {
   return ASHeaderScrollingViewBehavior_resolveGravityWithInt_(gravity);
 }
 
@@ -135,19 +149,19 @@ __attribute__((unused)) static jint ASHeaderScrollingViewBehavior_resolveGravity
   return 0;
 }
 
-- (jint)getScrollRangeWithADView:(ADView *)v {
+- (int32_t)getScrollRangeWithADView:(ADView *)v {
   return [((ADView *) nil_chk(v)) getMeasuredHeight];
 }
 
-- (jint)getVerticalLayoutGap {
+- (int32_t)getVerticalLayoutGap {
   return verticalLayoutGap_;
 }
 
-- (void)setOverlayTopWithInt:(jint)overlayTop {
+- (void)setOverlayTopWithInt:(int32_t)overlayTop {
   self->overlayTop_ = overlayTop;
 }
 
-- (jint)getOverlayTop {
+- (int32_t)getOverlayTop {
   return overlayTop_;
 }
 
@@ -211,11 +225,11 @@ void ASHeaderScrollingViewBehavior_initPackagePrivateWithADContext_withADAttribu
   self->verticalLayoutGap_ = 0;
 }
 
-jint ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(ASHeaderScrollingViewBehavior *self, ADView *header) {
+int32_t ASHeaderScrollingViewBehavior_getOverlapPixelsForOffsetWithADView_(ASHeaderScrollingViewBehavior *self, ADView *header) {
   return self->overlayTop_ == 0 ? 0 : ADMathUtils_clampWithInt_withInt_withInt_(JreFpToInt(([self getOverlapRatioForOffsetWithADView:header] * self->overlayTop_)), 0, self->overlayTop_);
 }
 
-jint ASHeaderScrollingViewBehavior_resolveGravityWithInt_(jint gravity) {
+int32_t ASHeaderScrollingViewBehavior_resolveGravityWithInt_(int32_t gravity) {
   ASHeaderScrollingViewBehavior_initialize();
   return gravity == ADGravity_NO_GRAVITY ? ADXGravityCompat_START | ADGravity_TOP : gravity;
 }

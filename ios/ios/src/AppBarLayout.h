@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\AppBarLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_AppBarLayout")
@@ -36,6 +37,8 @@
 @class ADViewGroup_LayoutParams;
 @class ADXCoordinatorLayout_Behavior;
 @class ASAppBarLayout_LayoutParams;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @protocol ASAppBarLayout_BaseOnOffsetChangedListener;
 @protocol ASAppBarLayout_LiftOnScrollListener;
 @protocol ASAppBarLayout_OnOffsetChangedListener;
@@ -56,76 +59,76 @@
 
 - (ADXCoordinatorLayout_Behavior *)getBehavior;
 
-- (jint)getMinimumHeightForVisibleOverlappingContent;
+- (int32_t)getMinimumHeightForVisibleOverlappingContent;
 
 - (ADDrawable *)getStateListAnimator;
 
-- (jint)getTotalScrollRange;
+- (int32_t)getTotalScrollRange;
 
-- (jboolean)isLifted;
+- (bool)isLifted;
 
-- (jboolean)isLiftOnScroll;
+- (bool)isLiftOnScroll;
 
-- (jboolean)removeLiftOnScrollListenerWithASAppBarLayout_LiftOnScrollListener:(id<ASAppBarLayout_LiftOnScrollListener>)liftOnScrollListener;
+- (bool)removeLiftOnScrollListenerWithASAppBarLayout_LiftOnScrollListener:(id<ASAppBarLayout_LiftOnScrollListener>)liftOnScrollListener;
 
 - (void)removeOnOffsetChangedListenerWithASAppBarLayout_BaseOnOffsetChangedListener:(id<ASAppBarLayout_BaseOnOffsetChangedListener>)listener;
 
 - (void)removeOnOffsetChangedListenerWithASAppBarLayout_OnOffsetChangedListener:(id<ASAppBarLayout_OnOffsetChangedListener>)listener;
 
-- (void)setExpandedWithBoolean:(jboolean)expanded;
+- (void)setExpandedWithBoolean:(bool)expanded;
 
-- (void)setExpandedWithBoolean:(jboolean)expanded
-                   withBoolean:(jboolean)animate;
+- (void)setExpandedWithBoolean:(bool)expanded
+                   withBoolean:(bool)animate;
 
-- (jboolean)setLiftableWithBoolean:(jboolean)liftable;
+- (bool)setLiftableWithBoolean:(bool)liftable;
 
-- (void)setLiftableOverrideEnabledWithBoolean:(jboolean)enabled;
+- (void)setLiftableOverrideEnabledWithBoolean:(bool)enabled;
 
-- (void)setLiftOnScrollWithBoolean:(jboolean)liftOnScroll;
+- (void)setLiftOnScrollWithBoolean:(bool)liftOnScroll;
 
-- (void)setOrientationWithInt:(jint)orientation;
+- (void)setOrientationWithInt:(int32_t)orientation;
 
 #pragma mark Protected
 
-- (jboolean)checkLayoutParamsWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p;
+- (bool)checkLayoutParamsWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p;
 
 - (ASAppBarLayout_LayoutParams *)generateDefaultLayoutParams;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 #pragma mark Package-Private
 
-- (jint)getDownNestedPreScrollRange;
+- (int32_t)getDownNestedPreScrollRange;
 
-- (jint)getDownNestedScrollRange;
+- (int32_t)getDownNestedScrollRange;
 
-- (jint)getPendingAction;
+- (int32_t)getPendingAction;
 
-- (jint)getTopInset;
+- (int32_t)getTopInset;
 
-- (jint)getUpNestedPreScrollRange;
+- (int32_t)getUpNestedPreScrollRange;
 
-- (jboolean)hasChildWithInterpolator;
+- (bool)hasChildWithInterpolator;
 
-- (jboolean)hasScrollableChildren;
+- (bool)hasScrollableChildren;
 
-- (void)onOffsetChangedWithInt:(jint)offset;
+- (void)onOffsetChangedWithInt:(int32_t)offset;
 
 - (void)resetPendingAction;
 
-- (jboolean)setLiftedStateWithBoolean:(jboolean)lifted;
+- (bool)setLiftedStateWithBoolean:(bool)lifted;
 
-- (jboolean)setLiftedStateWithBoolean:(jboolean)lifted
-                          withBoolean:(jboolean)force;
+- (bool)setLiftedStateWithBoolean:(bool)lifted
+                      withBoolean:(bool)force;
 
-- (jboolean)shouldLiftWithADView:(ADView *)defaultScrollingView;
+- (bool)shouldLiftWithADView:(ADView *)defaultScrollingView;
 
 // Disallowed inherited constructors, do not use.
 
@@ -135,25 +138,25 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout)
 
-inline jint ASAppBarLayout_get_PENDING_ACTION_NONE(void);
+inline int32_t ASAppBarLayout_get_PENDING_ACTION_NONE(void);
 #define ASAppBarLayout_PENDING_ACTION_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_NONE, int32_t)
 
-inline jint ASAppBarLayout_get_PENDING_ACTION_EXPANDED(void);
+inline int32_t ASAppBarLayout_get_PENDING_ACTION_EXPANDED(void);
 #define ASAppBarLayout_PENDING_ACTION_EXPANDED 1
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_EXPANDED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_EXPANDED, int32_t)
 
-inline jint ASAppBarLayout_get_PENDING_ACTION_COLLAPSED(void);
+inline int32_t ASAppBarLayout_get_PENDING_ACTION_COLLAPSED(void);
 #define ASAppBarLayout_PENDING_ACTION_COLLAPSED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_COLLAPSED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_COLLAPSED, int32_t)
 
-inline jint ASAppBarLayout_get_PENDING_ACTION_ANIMATE_ENABLED(void);
+inline int32_t ASAppBarLayout_get_PENDING_ACTION_ANIMATE_ENABLED(void);
 #define ASAppBarLayout_PENDING_ACTION_ANIMATE_ENABLED 4
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_ANIMATE_ENABLED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_ANIMATE_ENABLED, int32_t)
 
-inline jint ASAppBarLayout_get_PENDING_ACTION_FORCE(void);
+inline int32_t ASAppBarLayout_get_PENDING_ACTION_FORCE(void);
 #define ASAppBarLayout_PENDING_ACTION_FORCE 8
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_FORCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout, PENDING_ACTION_FORCE, int32_t)
 
 FOUNDATION_EXPORT void ASAppBarLayout_init(ASAppBarLayout *self);
 
@@ -165,17 +168,19 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout)
 
 @compatibility_alias ComGoogleAndroidMaterialAppbarAppBarLayout ASAppBarLayout;
 
+
 #endif
 
 #if !defined (ASAppBarLayout_BaseOnOffsetChangedListener_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_BaseOnOffsetChangedListener))
 #define ASAppBarLayout_BaseOnOffsetChangedListener_
 
 @class ASAppBarLayout;
+@class JavaLangInteger;
 
 @protocol ASAppBarLayout_BaseOnOffsetChangedListener < JavaObject >
 
 - (void)onOffsetChangedWithASAppBarLayout:(ASAppBarLayout *)appBarLayout
-                                  withInt:(jint)verticalOffset;
+                                  withInt:(int32_t)verticalOffset;
 
 @end
 
@@ -183,17 +188,19 @@ J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout_BaseOnOffsetChangedListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_BaseOnOffsetChangedListener)
 
+
 #endif
 
 #if !defined (ASAppBarLayout_OnOffsetChangedListener_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_OnOffsetChangedListener))
 #define ASAppBarLayout_OnOffsetChangedListener_
 
 @class ASAppBarLayout;
+@class JavaLangInteger;
 
 @protocol ASAppBarLayout_OnOffsetChangedListener < ASAppBarLayout_BaseOnOffsetChangedListener, JavaObject >
 
 - (void)onOffsetChangedWithASAppBarLayout:(ASAppBarLayout *)appBarLayout
-                                  withInt:(jint)verticalOffset;
+                                  withInt:(int32_t)verticalOffset;
 
 @end
 
@@ -201,21 +208,26 @@ J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout_OnOffsetChangedListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_OnOffsetChangedListener)
 
+
 #endif
 
 #if !defined (ASAppBarLayout_LiftOnScrollListener_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_LiftOnScrollListener))
 #define ASAppBarLayout_LiftOnScrollListener_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+
 @protocol ASAppBarLayout_LiftOnScrollListener < JavaObject >
 
-- (void)onUpdateWithFloat:(jfloat)elevation
-                  withInt:(jint)backgroundColor;
+- (void)onUpdateWithFloat:(float)elevation
+                  withInt:(int32_t)backgroundColor;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout_LiftOnScrollListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LiftOnScrollListener)
+
 
 #endif
 
@@ -228,22 +240,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LiftOnScrollListener)
 
 @class ADViewGroup_LayoutParams;
 @class ASAppBarLayout_ChildScrollEffect;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @protocol ADInterpolator;
 
 @interface ASAppBarLayout_LayoutParams : ADLinearLayout_LayoutParams {
  @public
-  jint scrollFlags_;
+  int32_t scrollFlags_;
   id<ADInterpolator> scrollInterpolator_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height
-                  withFloat:(jfloat)weight;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height
+                  withFloat:(float)weight;
 
 - (instancetype)initWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p;
 
@@ -251,17 +266,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LiftOnScrollListener)
 
 - (ASAppBarLayout_ChildScrollEffect *)getScrollEffect;
 
-- (jint)getScrollFlags;
+- (int32_t)getScrollFlags;
 
 - (id<ADInterpolator>)getScrollInterpolator;
 
-- (void)setScrollFlagsWithInt:(jint)flags;
+- (void)setScrollFlagsWithInt:(int32_t)flags;
 
 - (void)setScrollInterpolatorWithADInterpolator:(id<ADInterpolator>)interpolator;
 
 #pragma mark Package-Private
 
-- (jboolean)isCollapsible;
+- (bool)isCollapsible;
 
 // Disallowed inherited constructors, do not use.
 
@@ -273,65 +288,65 @@ J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout_LayoutParams)
 
 J2OBJC_FIELD_SETTER(ASAppBarLayout_LayoutParams, scrollInterpolator_, id<ADInterpolator>)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_NO_SCROLL(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_NO_SCROLL(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_NO_SCROLL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_NO_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_NO_SCROLL, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SCROLL(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SCROLL(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_SCROLL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SCROLL, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_EXIT_UNTIL_COLLAPSED(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_EXIT_UNTIL_COLLAPSED(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_EXIT_UNTIL_COLLAPSED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_EXIT_UNTIL_COLLAPSED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_EXIT_UNTIL_COLLAPSED, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_ENTER_ALWAYS(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_ENTER_ALWAYS(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS 4
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_ENTER_ALWAYS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_ENTER_ALWAYS, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED 8
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SNAP(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SNAP(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_SNAP 16
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SNAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SNAP, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SNAP_MARGINS(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_FLAG_SNAP_MARGINS(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_FLAG_SNAP_MARGINS 32
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SNAP_MARGINS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_FLAG_SNAP_MARGINS, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_FLAG_QUICK_RETURN(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_FLAG_QUICK_RETURN(void);
 #define ASAppBarLayout_LayoutParams_FLAG_QUICK_RETURN 5
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, FLAG_QUICK_RETURN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, FLAG_QUICK_RETURN, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_FLAG_SNAP(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_FLAG_SNAP(void);
 #define ASAppBarLayout_LayoutParams_FLAG_SNAP 17
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, FLAG_SNAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, FLAG_SNAP, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_COLLAPSIBLE_FLAGS(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_COLLAPSIBLE_FLAGS(void);
 #define ASAppBarLayout_LayoutParams_COLLAPSIBLE_FLAGS 10
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, COLLAPSIBLE_FLAGS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, COLLAPSIBLE_FLAGS, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_EFFECT_NONE(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_EFFECT_NONE(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_EFFECT_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_EFFECT_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_EFFECT_NONE, int32_t)
 
-inline jint ASAppBarLayout_LayoutParams_get_SCROLL_EFFECT_COMPRESS(void);
+inline int32_t ASAppBarLayout_LayoutParams_get_SCROLL_EFFECT_COMPRESS(void);
 #define ASAppBarLayout_LayoutParams_SCROLL_EFFECT_COMPRESS 1
-J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_EFFECT_COMPRESS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ASAppBarLayout_LayoutParams, SCROLL_EFFECT_COMPRESS, int32_t)
 
-FOUNDATION_EXPORT void ASAppBarLayout_LayoutParams_initWithInt_withInt_(ASAppBarLayout_LayoutParams *self, jint width, jint height);
+FOUNDATION_EXPORT void ASAppBarLayout_LayoutParams_initWithInt_withInt_(ASAppBarLayout_LayoutParams *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(ASAppBarLayout_LayoutParams *self, jint width, jint height, jfloat weight);
+FOUNDATION_EXPORT void ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(ASAppBarLayout_LayoutParams *self, int32_t width, int32_t height, float weight);
 
-FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(jint width, jint height, jfloat weight) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(int32_t width, int32_t height, float weight) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(jint width, jint height, jfloat weight);
+FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithInt_withInt_withFloat_(int32_t width, int32_t height, float weight);
 
 FOUNDATION_EXPORT void ASAppBarLayout_LayoutParams_initWithADViewGroup_LayoutParams_(ASAppBarLayout_LayoutParams *self, ADViewGroup_LayoutParams *p);
 
@@ -346,6 +361,7 @@ FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *new_ASAppBarLayout_LayoutParams_i
 FOUNDATION_EXPORT ASAppBarLayout_LayoutParams *create_ASAppBarLayout_LayoutParams_initWithASAppBarLayout_LayoutParams_(ASAppBarLayout_LayoutParams *source);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LayoutParams)
+
 
 #endif
 
@@ -362,6 +378,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LayoutParams)
 @class ASAppBarLayout_BaseBehavior_BaseDragCallback;
 @class ASAppBarLayout_SavedState;
 @class IOSIntArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ASAppBarLayout_BaseBehavior : ASHeaderBehavior
 
@@ -369,72 +387,72 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_LayoutParams)
 
 - (instancetype)init;
 
-- (jboolean)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                       withADView:(ASAppBarLayout *)abl
-                                          withInt:(jint)layoutDirection;
+- (bool)onLayoutChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                   withADView:(ASAppBarLayout *)abl
+                                      withInt:(int32_t)layoutDirection;
 
-- (jboolean)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                        withADView:(ASAppBarLayout *)child
-                                           withInt:(jint)parentWidthMeasureSpec
-                                           withInt:(jint)widthUsed
-                                           withInt:(jint)parentHeightMeasureSpec
-                                           withInt:(jint)heightUsed;
+- (bool)onMeasureChildWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                    withADView:(ASAppBarLayout *)child
+                                       withInt:(int32_t)parentWidthMeasureSpec
+                                       withInt:(int32_t)widthUsed
+                                       withInt:(int32_t)parentHeightMeasureSpec
+                                       withInt:(int32_t)heightUsed;
 
 - (void)onNestedPreScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                        withADView:(ASAppBarLayout *)child
                                        withADView:(ADView *)target
-                                          withInt:(jint)dx
-                                          withInt:(jint)dy
+                                          withInt:(int32_t)dx
+                                          withInt:(int32_t)dy
                                      withIntArray:(IOSIntArray *)consumed
-                                          withInt:(jint)type;
+                                          withInt:(int32_t)type;
 
 - (void)onNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                     withADView:(ASAppBarLayout *)child
                                     withADView:(ADView *)target
-                                       withInt:(jint)dxConsumed
-                                       withInt:(jint)dyConsumed
-                                       withInt:(jint)dxUnconsumed
-                                       withInt:(jint)dyUnconsumed
-                                       withInt:(jint)type
+                                       withInt:(int32_t)dxConsumed
+                                       withInt:(int32_t)dyConsumed
+                                       withInt:(int32_t)dxUnconsumed
+                                       withInt:(int32_t)dyUnconsumed
+                                       withInt:(int32_t)type
                                   withIntArray:(IOSIntArray *)consumed;
 
-- (jboolean)onStartNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                             withADView:(ASAppBarLayout *)child
-                                             withADView:(ADView *)directTargetChild
-                                             withADView:(ADView *)target
-                                                withInt:(jint)nestedScrollAxes
-                                                withInt:(jint)type;
+- (bool)onStartNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                         withADView:(ASAppBarLayout *)child
+                                         withADView:(ADView *)directTargetChild
+                                         withADView:(ADView *)target
+                                            withInt:(int32_t)nestedScrollAxes
+                                            withInt:(int32_t)type;
 
 - (void)onStopNestedScrollWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
                                         withADView:(ASAppBarLayout *)abl
                                         withADView:(ADView *)target
-                                           withInt:(jint)type;
+                                           withInt:(int32_t)type;
 
 - (void)setDragCallbackWithASAppBarLayout_BaseBehavior_BaseDragCallback:(ASAppBarLayout_BaseBehavior_BaseDragCallback *)callback;
 
 #pragma mark Package-Private
 
-- (jboolean)canDragViewWithADView:(ASAppBarLayout *)view;
+- (bool)canDragViewWithADView:(ASAppBarLayout *)view;
 
-- (jint)getMaxDragOffsetWithADView:(ASAppBarLayout *)view;
+- (int32_t)getMaxDragOffsetWithADView:(ASAppBarLayout *)view;
 
-- (jint)getScrollRangeForDragFlingWithADView:(ASAppBarLayout *)view;
+- (int32_t)getScrollRangeForDragFlingWithADView:(ASAppBarLayout *)view;
 
-- (jint)getTopBottomOffsetForScrollingSibling;
+- (int32_t)getTopBottomOffsetForScrollingSibling;
 
-- (jboolean)isOffsetAnimatorRunning;
+- (bool)isOffsetAnimatorRunning;
 
 - (void)onFlingFinishedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                      withADView:(ASAppBarLayout *)layout;
 
 - (void)restoreScrollStateWithASAppBarLayout_SavedState:(ASAppBarLayout_SavedState *)state
-                                            withBoolean:(jboolean)force;
+                                            withBoolean:(bool)force;
 
-- (jint)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
-                                              withADView:(ASAppBarLayout *)appBarLayout
-                                                 withInt:(jint)newOffset
-                                                 withInt:(jint)minOffset
-                                                 withInt:(jint)maxOffset;
+- (int32_t)setHeaderTopBottomOffsetWithADXCoordinatorLayout:(ADXCoordinatorLayout *)coordinatorLayout
+                                                 withADView:(ASAppBarLayout *)appBarLayout
+                                                    withInt:(int32_t)newOffset
+                                                    withInt:(int32_t)minOffset
+                                                    withInt:(int32_t)maxOffset;
 
 // Disallowed inherited constructors, do not use.
 
@@ -451,6 +469,7 @@ FOUNDATION_EXPORT ASAppBarLayout_BaseBehavior *new_ASAppBarLayout_BaseBehavior_i
 FOUNDATION_EXPORT ASAppBarLayout_BaseBehavior *create_ASAppBarLayout_BaseBehavior_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_BaseBehavior)
+
 
 #endif
 
@@ -475,12 +494,14 @@ FOUNDATION_EXPORT ASAppBarLayout_Behavior *create_ASAppBarLayout_Behavior_init(v
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_Behavior)
 
+
 #endif
 
 #if !defined (ASAppBarLayout_BaseBehavior_BaseDragCallback_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_BaseBehavior_BaseDragCallback))
 #define ASAppBarLayout_BaseBehavior_BaseDragCallback_
 
 @class ASAppBarLayout;
+@class JavaLangBoolean;
 
 @interface ASAppBarLayout_BaseBehavior_BaseDragCallback : NSObject
 
@@ -488,7 +509,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_Behavior)
 
 - (instancetype)init;
 
-- (jboolean)canDragWithASAppBarLayout:(ASAppBarLayout *)appBarLayout;
+- (bool)canDragWithASAppBarLayout:(ASAppBarLayout *)appBarLayout;
 
 @end
 
@@ -497,6 +518,7 @@ J2OBJC_EMPTY_STATIC_INIT(ASAppBarLayout_BaseBehavior_BaseDragCallback)
 FOUNDATION_EXPORT void ASAppBarLayout_BaseBehavior_BaseDragCallback_init(ASAppBarLayout_BaseBehavior_BaseDragCallback *self);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_BaseBehavior_BaseDragCallback)
+
 
 #endif
 
@@ -513,6 +535,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_BaseBehavior_BaseDragCallback)
 @class ADView;
 @class ADXCoordinatorLayout;
 @class ASAppBarLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @protocol JavaUtilList;
 
 @interface ASAppBarLayout_ScrollingViewBehavior : ASHeaderScrollingViewBehavior
@@ -521,30 +546,30 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_BaseBehavior_BaseDragCallback)
 
 - (instancetype)init;
 
-- (jboolean)layoutDependsOnWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                         withADView:(ADView *)child
-                                         withADView:(ADView *)dependency;
+- (bool)layoutDependsOnWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                     withADView:(ADView *)child
+                                     withADView:(ADView *)dependency;
 
-- (jboolean)onDependentViewChangedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                                withADView:(ADView *)child
-                                                withADView:(ADView *)dependency;
+- (bool)onDependentViewChangedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                            withADView:(ADView *)child
+                                            withADView:(ADView *)dependency;
 
 - (void)onDependentViewRemovedWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
                                             withADView:(ADView *)child
                                             withADView:(ADView *)dependency;
 
-- (jboolean)onRequestChildRectangleOnScreenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
-                                                         withADView:(ADView *)child
-                                                         withADRect:(ADRect *)rectangle
-                                                        withBoolean:(jboolean)immediate;
+- (bool)onRequestChildRectangleOnScreenWithADXCoordinatorLayout:(ADXCoordinatorLayout *)parent
+                                                     withADView:(ADView *)child
+                                                     withADRect:(ADRect *)rectangle
+                                                    withBoolean:(bool)immediate;
 
 #pragma mark Package-Private
 
 - (ASAppBarLayout *)findFirstDependencyWithJavaUtilList:(id<JavaUtilList>)views;
 
-- (jfloat)getOverlapRatioForOffsetWithADView:(ADView *)header;
+- (float)getOverlapRatioForOffsetWithADView:(ADView *)header;
 
-- (jint)getScrollRangeWithADView:(ADView *)v;
+- (int32_t)getScrollRangeWithADView:(ADView *)v;
 
 // Disallowed inherited constructors, do not use.
 
@@ -565,6 +590,7 @@ FOUNDATION_EXPORT ASAppBarLayout_ScrollingViewBehavior *create_ASAppBarLayout_Sc
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_ScrollingViewBehavior)
 
+
 #endif
 
 #if !defined (ASAppBarLayout_ChildScrollEffect_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_ChildScrollEffect))
@@ -572,6 +598,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_ScrollingViewBehavior)
 
 @class ADView;
 @class ASAppBarLayout;
+@class JavaLangFloat;
 
 @interface ASAppBarLayout_ChildScrollEffect : NSObject
 
@@ -581,7 +608,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_ScrollingViewBehavior)
 
 - (void)onOffsetChangedWithASAppBarLayout:(ASAppBarLayout *)appBarLayout
                                withADView:(ADView *)child
-                                withFloat:(jfloat)offset;
+                                withFloat:(float)offset;
 
 @end
 
@@ -591,20 +618,24 @@ FOUNDATION_EXPORT void ASAppBarLayout_ChildScrollEffect_init(ASAppBarLayout_Chil
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_ChildScrollEffect)
 
+
 #endif
 
 #if !defined (ASAppBarLayout_SavedState_) && (INCLUDE_ALL_AppBarLayout || defined(INCLUDE_ASAppBarLayout_SavedState))
 #define ASAppBarLayout_SavedState_
 
 @class ASAppBarLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ASAppBarLayout_SavedState : NSObject {
  @public
-  jboolean fullyScrolled_;
-  jboolean fullyExpanded_;
-  jint firstVisibleChildIndex_;
-  jfloat firstVisibleChildPercentageShown_;
-  jboolean firstVisibleChildAtMinimumHeight_;
+  bool fullyScrolled_;
+  bool fullyExpanded_;
+  int32_t firstVisibleChildIndex_;
+  float firstVisibleChildPercentageShown_;
+  bool firstVisibleChildAtMinimumHeight_;
 }
 
 #pragma mark Package-Private
@@ -626,6 +657,7 @@ FOUNDATION_EXPORT ASAppBarLayout_SavedState *new_ASAppBarLayout_SavedState_initW
 FOUNDATION_EXPORT ASAppBarLayout_SavedState *create_ASAppBarLayout_SavedState_initWithASAppBarLayout_(ASAppBarLayout *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayout_SavedState)
+
 
 #endif
 

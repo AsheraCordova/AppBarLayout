@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\ashera\appbarlayout\AppBarLayoutPlugin.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_AppBarLayoutPlugin")
@@ -39,6 +40,7 @@ FOUNDATION_EXPORT void ASAppBarLayoutPlugin_initPlugin(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASAppBarLayoutPlugin)
 
 @compatibility_alias ComAsheraAppbarlayoutAppBarLayoutPlugin ASAppBarLayoutPlugin;
+
 
 #endif
 

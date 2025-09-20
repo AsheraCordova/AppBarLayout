@@ -3,12 +3,23 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\ashera\appbarlayout\AppBarLayoutPlugin.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AppBarLayout.h"
 #include "AppBarLayoutImpl.h"
 #include "AppBarLayoutPlugin.h"
 #include "IBehavior.h"
 #include "J2ObjC_source.h"
 #include "WidgetFactory.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASAppBarLayoutPlugin_1 : NSObject < ASIBehavior >
@@ -26,6 +37,7 @@ __attribute__((unused)) static void ASAppBarLayoutPlugin_1_init(ASAppBarLayoutPl
 __attribute__((unused)) static ASAppBarLayoutPlugin_1 *new_ASAppBarLayoutPlugin_1_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASAppBarLayoutPlugin_1 *create_ASAppBarLayoutPlugin_1_init(void);
+
 
 @implementation ASAppBarLayoutPlugin
 
@@ -77,6 +89,8 @@ void ASAppBarLayoutPlugin_initPlugin() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASAppBarLayoutPlugin)
 
+J2OBJC_NAME_MAPPING(ASAppBarLayoutPlugin, "com.ashera.appbarlayout", "AS")
+
 @implementation ASAppBarLayoutPlugin_1
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -102,7 +116,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(newInstance);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LASAppBarLayoutPlugin;", "initPlugin" };
-  static const J2ObjcClassInfo _ASAppBarLayoutPlugin_1 = { "", "com.ashera.appbarlayout", ptrTable, methods, NULL, 7, 0x8018, 2, 0, 0, -1, 1, -1, -1 };
+  static const J2ObjcClassInfo _ASAppBarLayoutPlugin_1 = { "", "com.ashera.appbarlayout", ptrTable, methods, NULL, 7, 0x8000, 2, 0, 0, -1, 1, -1, -1 };
   return &_ASAppBarLayoutPlugin_1;
 }
 

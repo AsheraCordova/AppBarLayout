@@ -3,21 +3,34 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAppBarLayoutPlugin\src\main\java\com\google\android\material\appbar\ViewOffsetHelper.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "View.h"
 #include "ViewCompat.h"
 #include "ViewOffsetHelper.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASViewOffsetHelper () {
  @public
   ADView *view_;
-  jint layoutTop_;
-  jint layoutLeft_;
-  jint offsetTop_;
-  jint offsetLeft_;
-  jboolean verticalOffsetEnabled_;
-  jboolean horizontalOffsetEnabled_;
+  int32_t layoutTop_;
+  int32_t layoutLeft_;
+  int32_t offsetTop_;
+  int32_t offsetLeft_;
+  bool verticalOffsetEnabled_;
+  bool horizontalOffsetEnabled_;
 }
 
 @end
@@ -41,7 +54,7 @@ J2OBJC_FIELD_SETTER(ASViewOffsetHelper, view_, ADView *)
   ADXViewCompat_offsetLeftAndRightWithADView_withInt_(view_, offsetLeft_ - ([view_ getLeft] - layoutLeft_));
 }
 
-- (jboolean)setTopAndBottomOffsetWithInt:(jint)offset {
+- (bool)setTopAndBottomOffsetWithInt:(int32_t)offset {
   if (verticalOffsetEnabled_ && offsetTop_ != offset) {
     offsetTop_ = offset;
     [self applyOffsets];
@@ -50,7 +63,7 @@ J2OBJC_FIELD_SETTER(ASViewOffsetHelper, view_, ADView *)
   return false;
 }
 
-- (jboolean)setLeftAndRightOffsetWithInt:(jint)offset {
+- (bool)setLeftAndRightOffsetWithInt:(int32_t)offset {
   if (horizontalOffsetEnabled_ && offsetLeft_ != offset) {
     offsetLeft_ = offset;
     [self applyOffsets];
@@ -59,35 +72,35 @@ J2OBJC_FIELD_SETTER(ASViewOffsetHelper, view_, ADView *)
   return false;
 }
 
-- (jint)getTopAndBottomOffset {
+- (int32_t)getTopAndBottomOffset {
   return offsetTop_;
 }
 
-- (jint)getLeftAndRightOffset {
+- (int32_t)getLeftAndRightOffset {
   return offsetLeft_;
 }
 
-- (jint)getLayoutTop {
+- (int32_t)getLayoutTop {
   return layoutTop_;
 }
 
-- (jint)getLayoutLeft {
+- (int32_t)getLayoutLeft {
   return layoutLeft_;
 }
 
-- (void)setVerticalOffsetEnabledWithBoolean:(jboolean)verticalOffsetEnabled {
+- (void)setVerticalOffsetEnabledWithBoolean:(bool)verticalOffsetEnabled {
   self->verticalOffsetEnabled_ = verticalOffsetEnabled;
 }
 
-- (jboolean)isVerticalOffsetEnabled {
+- (bool)isVerticalOffsetEnabled {
   return verticalOffsetEnabled_;
 }
 
-- (void)setHorizontalOffsetEnabledWithBoolean:(jboolean)horizontalOffsetEnabled {
+- (void)setHorizontalOffsetEnabledWithBoolean:(bool)horizontalOffsetEnabled {
   self->horizontalOffsetEnabled_ = horizontalOffsetEnabled;
 }
 
-- (jboolean)isHorizontalOffsetEnabled {
+- (bool)isHorizontalOffsetEnabled {
   return horizontalOffsetEnabled_;
 }
 

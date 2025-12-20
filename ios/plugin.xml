@@ -11,7 +11,7 @@
   
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
-      <feature name="com.ashera.appbarlayout.ios">
+      <feature name="CordovaAppBarLayoutPlugin">
         	<param name="ios-package" value="CordovaAppBarLayoutPlugin" />
          	<param name="onload" value="true" />
       </feature>
